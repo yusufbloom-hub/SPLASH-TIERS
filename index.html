@@ -437,8 +437,8 @@ body{
 </div>
 
 <div class="player-info">
-<h2>PvPDemon</h2>
-<p>Warlord <span>(440 pts)</span></p>
+<h2>Ysplash_CC</h2>
+<p>Combat Cadat <span>(23 pts)</span></p>
 </div>
 
 </div>
@@ -516,12 +516,12 @@ body{
 <div class="rank">2</div>
 
 <div class="player-head">
-<img src="https://visage.surgeplay.com/face/128/Alex">
+<img src="https://visage.surgeplay.com/face/128/X-Steve">
 </div>
 
 <div class="player-info">
-<h2>coldified</h2>
-<p>Elite <span>(350 pts)</span></p>
+<h2>NinjaRLCS</h2>
+<p>Rokkie <span>(7 pts)</span></p>
 </div>
 
 </div>
@@ -623,7 +623,7 @@ Mace
 </div>
 
 <div class="best-mode-rank" id="best1Rank">
-HT1
+HT4
 </div>
 
 </div>
@@ -634,15 +634,15 @@ HT1
 src="https://visage.surgeplay.com/face/128/X-Steve">
 
 <div class="modal-name" id="modalName">
-PvPDemon
+Ysplash_CC
 </div>
 
 <div class="modal-rank" id="modalRank">
-Warlord
+Combat Cadat
 </div>
 
 <div class="modal-points" id="modalPoints">
-ME | 440 / 720
+ME | 23 / 720
 </div>
 
 </div>
@@ -654,15 +654,15 @@ BEST GAMEMODE #2
 </div>
 
 <div class="best-mode-icon">
-🛒
+💎
 </div>
 
 <div class="best-mode-name" id="best2Name">
-Cart
+Vanilla
 </div>
 
 <div class="best-mode-rank" id="best2Rank">
-LT1
+LT4
 </div>
 
 </div>
@@ -742,45 +742,45 @@ LT1
 const players = [
 
 {
-    name:"PvPDemon",
+    name:"Ysplash_CC",
     region:"ME",
-    rank:"Warlord",
-    points:440,
+    rank:"Combat Cadet",
+    points:23,
     avatar:"X-Steve",
 
-    sword:"HT3",
-    axe:"HT4",
-    pot:"LT4",
-    nethpot:"HT2",
-    uhc:"LT2",
+    sword:"HT5",
+    axe:"HT5",
+    pot:"HT5",
+    nethpot:"LT5",
+    uhc:"HT5",
     smp:"HT5",
-    diamondsmp:"NONE",
-    vanilla:"HT4",
-    mace:"HT1",
-    spear:"LT2",
-    spearmace:"HT3",
-    cart:"LT1"
+    diamondsmp:"HT5",
+    vanilla:"LT4",
+    mace:"HT4",
+    spear:"NONE",
+    spearmace:"LT5",
+    cart:"HT5"
 },
 
 {
-    name:"coldified",
-    region:"EU",
-    rank:"Elite",
-    points:350,
-    avatar:"Alex",
+    name:"Ninjarlcs",
+    region:"ME",
+    rank:"Rookie",
+    points:7,
+    avatar:"Steve",
 
-    sword:"LT1",
-    axe:"HT3",
-    pot:"LT4",
-    nethpot:"LT3",
-    uhc:"HT2",
+    sword:"HT5",
+    axe:"NONE",
+    pot:"NONE",
+    nethpot:"NONE",
+    uhc:"NONE",
     smp:"NONE",
-    diamondsmp:"NONE",
-    vanilla:"HT5",
-    mace:"LT2",
+    diamondsmp:"LT5",
+    vanilla:"LT5",
+    mace:"HT5",
     spear:"NONE",
-    spearmace:"HT4",
-    cart:"HT2"
+    spearmace:"NONE",
+    cart:"LT5"
 }
 
 ];
@@ -854,11 +854,11 @@ function buildColumnLayout(mode){
 
     const tiers = [
 
-        { title:"HT1", values:["HT1"] },
-        { title:"LT1", values:["LT1"] },
-        { title:"HT2", values:["HT2"] },
-        { title:"LT2", values:["LT2"] },
-        { title:"Other", values:["HT3","LT3","HT4","LT4","HT5","LT5"] }
+        { title:"Tier 1", values:["HT1", "LT1"] },
+        { title:"Tier 2", values:["HT2", "LT2"] },
+        { title:"Tier 3", values:["HT3", "LT3"] },
+        { title:"Tier 4", values:["HT4", "LT4"] },
+        { title:"Tier 5", values:["HT5","LT5"] }
 
     ];
 
