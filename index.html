@@ -6,7 +6,6 @@
 <title>Splash Tiers</title>
 
 <style>
-
 :root{
     --bg:#030712;
     --card:#07152d;
@@ -58,17 +57,10 @@ body{
     transition:.2s;
 }
 
-.discord-btn{
-    background:linear-gradient(90deg,#3955ff,#4b8fff);
-}
+.discord-btn{ background:linear-gradient(90deg,#3955ff,#4b8fff); }
+.server-btn{ background:linear-gradient(90deg,#16b4bd,#28c88f); }
 
-.server-btn{
-    background:linear-gradient(90deg,#16b4bd,#28c88f);
-}
-
-.top-btn:hover{
-    transform:scale(1.05);
-}
+.top-btn:hover{ transform:scale(1.05); }
 
 .nav-tabs{
     background:#08152d;
@@ -88,16 +80,9 @@ body{
     border-radius:12px;
     cursor:pointer;
     font-weight:700;
-    transition:.2s;
 }
 
-.tab-btn:hover{
-    background:#183056;
-}
-
-.tab-btn.active{
-    background:#5bcfd5;
-}
+.tab-btn.active{ background:#5bcfd5; }
 
 .player-row{
     background:#07152d;
@@ -106,120 +91,35 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    gap:25px;
-    margin-bottom:25px;
-    overflow:hidden;
+    margin-bottom:20px;
     cursor:pointer;
 }
 
 .player-left{
     display:flex;
+    gap:20px;
     align-items:center;
-    gap:22px;
-    min-width:320px;
 }
 
-.rank{
-    font-size:64px;
-    font-weight:900;
-}
+.rank{ font-size:50px;font-weight:900; }
 
-.player-head img{
-    width:65px;
-    height:65px;
-}
-
-.player-info h2{
-    font-size:30px;
-    margin-bottom:4px;
-}
-
-.player-info p{
-    font-size:20px;
-    color:#8fa9cf;
-}
-
-.player-info span{
-    color:var(--cyan);
-    font-weight:800;
-}
+.player-head img{ width:60px;height:60px; }
 
 .row-tiers-container{
     display:grid;
     grid-template-columns:repeat(6,1fr);
     gap:10px;
-    width:100%;
-    max-width:520px;
 }
 
 .micro-tier{
     background:#101d3a;
-    border-radius:12px;
     padding:10px;
+    border-radius:10px;
     text-align:center;
 }
 
-.micro-tier-label{
-    font-size:12px;
-    color:#9ab4dc;
-    margin-bottom:4px;
-}
-
-.micro-tier-rank{
-    font-size:18px;
-    font-weight:800;
-}
-
-#panel-columns{
-    display:none;
-}
-
-.columns-container{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:20px;
-}
-
-.tier-column{
-    background:#07152d;
-    border-radius:20px;
-    padding:20px;
-    min-height:400px;
-}
-
-.column-header{
-    text-align:center;
-    font-size:28px;
-    font-weight:900;
-    margin-bottom:20px;
-    color:var(--cyan);
-}
-
-.column-player{
-    background:#101d3a;
-    border-radius:15px;
-    padding:18px;
-    text-align:center;
-    margin-bottom:15px;
-}
-
-.column-player img{
-    width:60px;
-    height:60px;
-    margin-bottom:10px;
-}
-
-.column-player-name{
-    font-size:22px;
-    font-weight:800;
-}
-
-.column-player-rank{
-    color:var(--cyan);
-    margin-top:6px;
-    font-size:18px;
-    font-weight:800;
-}
+.micro-tier-label{ font-size:12px;color:#aaa; }
+.micro-tier-rank{ font-weight:800;color:#55fff5; }
 
 .modal-overlay{
     position:fixed;
@@ -228,693 +128,275 @@ body{
     display:none;
     justify-content:center;
     align-items:center;
-    z-index:999;
 }
 
 .modal{
-    width:950px;
+    background:#07152d;
+    padding:30px;
+    border-radius:20px;
+    width:900px;
     max-width:95%;
-    background:#04132b;
-    border-radius:25px;
-    padding:35px;
-    position:relative;
 }
 
 .close-btn{
-    position:absolute;
-    top:18px;
-    right:18px;
-    width:50px;
-    height:50px;
-    border:none;
-    border-radius:50%;
+    float:right;
     background:red;
+    border:none;
     color:white;
-    font-size:26px;
+    padding:10px 15px;
+    border-radius:10px;
     cursor:pointer;
 }
 
 .modal-top{
     display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    gap:40px;
-    margin-bottom:30px;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
 }
 
 .best-card{
-    background:#07152d;
-    border:1px solid #13456e;
-    border-radius:20px;
-    width:180px;
-    padding:20px;
+    background:#101d3a;
+    padding:15px;
+    border-radius:15px;
+    width:160px;
     text-align:center;
-}
-
-.best-title{
-    color:var(--cyan);
-    font-size:16px;
-    font-weight:900;
-    margin-bottom:12px;
-}
-
-.best-mode-icon{
-    font-size:58px;
-    margin:15px 0;
-}
-
-.best-mode-name{
-    font-size:24px;
-    font-weight:900;
-}
-
-.best-mode-rank{
-    color:var(--cyan);
-    font-size:22px;
-    font-weight:900;
-}
-
-.modal-avatar{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
-.modal-avatar img{
-    width:120px;
-    height:120px;
-}
-
-.modal-name{
-    font-size:62px;
-    font-weight:900;
-    margin-top:12px;
-}
-
-.modal-rank{
-    color:var(--cyan);
-    font-size:32px;
-    margin-top:6px;
-}
-
-.modal-points{
-    margin-top:10px;
-    font-size:24px;
 }
 
 .modal-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:16px;
+    gap:10px;
 }
 
 .modal-box{
-    background:#0d1d3f;
-    border-radius:15px;
-    padding:18px;
+    background:#101d3a;
+    padding:15px;
+    border-radius:12px;
     text-align:center;
 }
 
-.modal-box-title{
-    color:#9ab4dc;
-    margin-bottom:10px;
-    font-size:18px;
+.search-admin{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:20px;
 }
 
-.modal-box-rank{
-    color:var(--cyan);
-    font-size:24px;
-    font-weight:900;
+input{
+    padding:10px;
+    border-radius:10px;
+    border:none;
 }
 
-@media(max-width:1100px){
-
-    .player-row{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-
-    .row-tiers-container{
-        grid-template-columns:repeat(3,1fr);
-        max-width:100%;
-    }
-
-    .columns-container{
-        grid-template-columns:1fr;
-    }
-
-    .modal-top{
-        flex-direction:column;
-        align-items:center;
-    }
-
-    .modal-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
+button{
+    cursor:pointer;
 }
-
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
 <h1 class="title">SPLASH TIERS</h1>
 
-<div class="top-buttons">
-
-<a href="#" class="top-btn discord-btn">
-🎮 Discord Server
-</a>
-
-<a href="#" class="top-btn server-btn">
-🖥️ Server IP
-</a>
-
+<div class="search-admin">
+<input id="searchBox" placeholder="Search player...">
+<button onclick="openAdmin()">Admin</button>
 </div>
 
 <div class="nav-tabs">
+<button class="tab-btn active" onclick="displayTab('overall')">Overall</button>
+</div>
 
-<button class="tab-btn active" id="btn-overall" onclick="displayTab('overall')">Overall</button>
-
-<button class="tab-btn" id="btn-sword" onclick="displayTab('sword')">Sword</button>
-
-<button class="tab-btn" id="btn-axe" onclick="displayTab('axe')">Axe</button>
-
-<button class="tab-btn" id="btn-pot" onclick="displayTab('pot')">Pot</button>
-
-<button class="tab-btn" id="btn-nethpot" onclick="displayTab('nethpot')">NethPot</button>
-
-<button class="tab-btn" id="btn-uhc" onclick="displayTab('uhc')">UHC</button>
-
-<button class="tab-btn" id="btn-smp" onclick="displayTab('smp')">SMP</button>
-
-<button class="tab-btn" id="btn-diamondsmp" onclick="displayTab('diamondsmp')">Diamond SMP</button>
-
-<button class="tab-btn" id="btn-vanilla" onclick="displayTab('vanilla')">Vanilla</button>
-
-<button class="tab-btn" id="btn-mace" onclick="displayTab('mace')">Mace</button>
-
-<button class="tab-btn" id="btn-spear" onclick="displayTab('spear')">Spear</button>
-
-<button class="tab-btn" id="btn-spearmace" onclick="displayTab('spearmace')">Spear Mace</button>
-
-<button class="tab-btn" id="btn-cart" onclick="displayTab('cart')">Cart</button>
+<div id="panel-overall"></div>
 
 </div>
 
-<div id="panel-overall">
-
-<div class="player-row" onclick="openModal(players[0])">
-
-<div class="player-left">
-
-<div class="rank">1</div>
-
-<div class="player-head">
-<img src="https://visage.surgeplay.com/face/128/X-Steve">
-</div>
-
-<div class="player-info">
-<h2>PvPDemon</h2>
-<p>Warlord <span>(440 pts)</span></p>
-</div>
-
-</div>
-
-<div class="row-tiers-container">
-
-<div class="micro-tier">
-<div class="micro-tier-label">Swd</div>
-<div class="micro-tier-rank">HT3</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Axe</div>
-<div class="micro-tier-rank">HT4</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Pot</div>
-<div class="micro-tier-rank">LT4</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">NPot</div>
-<div class="micro-tier-rank">HT2</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">UHC</div>
-<div class="micro-tier-rank">LT2</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">SMP</div>
-<div class="micro-tier-rank">HT5</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">DSMP</div>
-<div class="micro-tier-rank">NONE</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Van</div>
-<div class="micro-tier-rank">HT4</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Mace</div>
-<div class="micro-tier-rank">HT1</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Spr</div>
-<div class="micro-tier-rank">LT2</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">S-M</div>
-<div class="micro-tier-rank">HT3</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Cart</div>
-<div class="micro-tier-rank">LT1</div>
-</div>
-
-</div>
-
-</div>
-
-<div class="player-row" onclick="openModal(players[1])">
-
-<div class="player-left">
-
-<div class="rank">2</div>
-
-<div class="player-head">
-<img src="https://visage.surgeplay.com/face/128/Alex">
-</div>
-
-<div class="player-info">
-<h2>coldified</h2>
-<p>Elite <span>(350 pts)</span></p>
-</div>
-
-</div>
-
-<div class="row-tiers-container">
-
-<div class="micro-tier">
-<div class="micro-tier-label">Swd</div>
-<div class="micro-tier-rank">LT1</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Axe</div>
-<div class="micro-tier-rank">HT3</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Pot</div>
-<div class="micro-tier-rank">LT4</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">NPot</div>
-<div class="micro-tier-rank">LT3</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">UHC</div>
-<div class="micro-tier-rank">HT2</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">SMP</div>
-<div class="micro-tier-rank">NONE</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">DSMP</div>
-<div class="micro-tier-rank">NONE</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Van</div>
-<div class="micro-tier-rank">HT5</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Mace</div>
-<div class="micro-tier-rank">LT2</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Spr</div>
-<div class="micro-tier-rank">NONE</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">S-M</div>
-<div class="micro-tier-rank">HT4</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Cart</div>
-<div class="micro-tier-rank">HT2</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<div id="panel-columns">
-<div class="columns-container" id="columns-matrix"></div>
-</div>
-
-</div>
-
+<!-- MODAL -->
 <div class="modal-overlay" id="modal">
-
 <div class="modal">
 
-<button class="close-btn" onclick="closeModal()">×</button>
+<button class="close-btn" onclick="closeModal()">X</button>
 
 <div class="modal-top">
-
 <div class="best-card">
-
-<div class="best-title">
-BEST GAMEMODE #1
+<div>BEST #1</div>
+<div id="best1Name"></div>
+<div id="best1Rank"></div>
 </div>
 
-<div class="best-mode-icon">
-🔨
-</div>
-
-<div class="best-mode-name" id="best1Name">
-Mace
-</div>
-
-<div class="best-mode-rank" id="best1Rank">
-HT1
-</div>
-
-</div>
-
-<div class="modal-avatar">
-
-<img id="modalHead"
-src="https://visage.surgeplay.com/face/128/X-Steve">
-
-<div class="modal-name" id="modalName">
-PvPDemon
-</div>
-
-<div class="modal-rank" id="modalRank">
-Warlord
-</div>
-
-<div class="modal-points" id="modalPoints">
-ME | 440 / 720
-</div>
-
+<div>
+<h2 id="modalName"></h2>
+<p id="modalRank"></p>
+<p id="modalPoints"></p>
 </div>
 
 <div class="best-card">
-
-<div class="best-title">
-BEST GAMEMODE #2
+<div>BEST #2</div>
+<div id="best2Name"></div>
+<div id="best2Rank"></div>
 </div>
-
-<div class="best-mode-icon">
-🛒
-</div>
-
-<div class="best-mode-name" id="best2Name">
-Cart
-</div>
-
-<div class="best-mode-rank" id="best2Rank">
-LT1
-</div>
-
-</div>
-
 </div>
 
 <div class="modal-grid">
-
-<div class="modal-box">
-<div class="modal-box-title">Sword</div>
-<div class="modal-box-rank" id="mSword">HT3</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Axe</div>
-<div class="modal-box-rank" id="mAxe">HT4</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Pot</div>
-<div class="modal-box-rank" id="mPot">LT4</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">NethPot</div>
-<div class="modal-box-rank" id="mNethPot">HT2</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">UHC</div>
-<div class="modal-box-rank" id="mUHC">LT2</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">SMP</div>
-<div class="modal-box-rank" id="mSMP">HT5</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Diamond SMP</div>
-<div class="modal-box-rank" id="mDSMP">NONE</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Vanilla</div>
-<div class="modal-box-rank" id="mVanilla">HT4</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Mace</div>
-<div class="modal-box-rank" id="mMace">HT1</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Spear</div>
-<div class="modal-box-rank" id="mSpear">LT2</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Spear Mace</div>
-<div class="modal-box-rank" id="mSM">HT3</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Cart</div>
-<div class="modal-box-rank" id="mCart">LT1</div>
+<div class="modal-box">Sword <div id="mSword"></div></div>
+<div class="modal-box">Axe <div id="mAxe"></div></div>
+<div class="modal-box">Pot <div id="mPot"></div></div>
+<div class="modal-box">UHC <div id="mUHC"></div></div>
+<div class="modal-box">SMP <div id="mSMP"></div></div>
+<div class="modal-box">Cart <div id="mCart"></div></div>
 </div>
 
 </div>
-
 </div>
 
+<!-- ADMIN -->
+<div id="adminModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);justify-content:center;align-items:center;">
+<div style="background:#07152d;padding:20px;border-radius:15px;width:300px;text-align:center;">
+<h3>Admin Login</h3>
+<input id="adminUser" placeholder="Username"><br><br>
+<input id="adminPass" type="password" placeholder="Password"><br><br>
+<button onclick="loginAdmin()">Login</button>
+<p id="err"></p>
+</div>
 </div>
 
 <script>
+const ADMIN_USER="Admin";
+const ADMIN_PASS="Lord.of.rings2";
 
-const players = [
+let isAdmin=false;
 
+// LOAD OR DEFAULT
+let players = JSON.parse(localStorage.getItem("players")) || [
 {
-    name:"PvPDemon",
-    region:"ME",
-    rank:"Warlord",
-    points:440,
-    avatar:"X-Steve",
-
-    sword:"HT3",
-    axe:"HT4",
-    pot:"LT4",
-    nethpot:"HT2",
-    uhc:"LT2",
-    smp:"HT5",
-    diamondsmp:"NONE",
-    vanilla:"HT4",
-    mace:"HT1",
-    spear:"LT2",
-    spearmace:"HT3",
-    cart:"LT1"
+name:"PvPDemon",region:"ME",rank:"Warlord",points:440,avatar:"X-Steve",
+sword:"HT3",axe:"HT4",pot:"LT4",uhc:"LT2",smp:"HT5",cart:"LT1"
 },
-
 {
-    name:"coldified",
-    region:"EU",
-    rank:"Elite",
-    points:350,
-    avatar:"Alex",
-
-    sword:"LT1",
-    axe:"HT3",
-    pot:"LT4",
-    nethpot:"LT3",
-    uhc:"HT2",
-    smp:"NONE",
-    diamondsmp:"NONE",
-    vanilla:"HT5",
-    mace:"LT2",
-    spear:"NONE",
-    spearmace:"HT4",
-    cart:"HT2"
+name:"coldified",region:"EU",rank:"Elite",points:350,avatar:"Alex",
+sword:"LT1",axe:"HT3",pot:"LT4",uhc:"HT2",smp:"NONE",cart:"HT2"
 }
-
 ];
 
-function openModal(player){
+// SAVE SYSTEM
+function save(){
+localStorage.setItem("players", JSON.stringify(players));
+}
 
-    document.getElementById("modal").style.display="flex";
+// TIER CONVERT
+function tierNum(v){
+if(v==="HT1"||v==="LT1")return 1;
+if(v==="HT2"||v==="LT2")return 2;
+if(v==="HT3"||v==="LT3")return 3;
+if(v==="HT4"||v==="LT4")return 4;
+if(v==="HT5"||v==="LT5")return 5;
+return 999;
+}
 
-    document.getElementById("modalHead").src =
-    `https://visage.surgeplay.com/face/128/${player.avatar}`;
+function format(v){
+if(v==="NONE")return "NONE";
+return "TIER "+tierNum(v);
+}
 
-    document.getElementById("modalName").innerText = player.name;
+// SORT
+function score(p){
+let vals=[p.sword,p.axe,p.pot,p.uhc,p.smp,p.cart];
+let t=0,c=0;
+vals.forEach(v=>{if(v!=="NONE"){t+=tierNum(v);c++;}});
+return t/c;
+}
 
-    document.getElementById("modalRank").innerText = player.rank;
+function render(filter=""){
+players.sort((a,b)=>score(a)-score(b));
+save();
 
-    document.getElementById("modalPoints").innerText =
-    `${player.region} | ${player.points} / 720`;
+let html="";
+players.forEach((p,i)=>{
+if(!p.name.toLowerCase().includes(filter))return;
 
-    document.getElementById("best1Name").innerText = "Mace";
-    document.getElementById("best1Rank").innerText = player.mace;
+html+=`
+<div class="player-row" onclick="openModal(${i})">
+<div class="player-left">
+<div class="rank">${i+1}</div>
+<img src="https://visage.surgeplay.com/face/64/${p.avatar}">
+<div>
+<h2>${p.name}</h2>
+<p>${p.rank}</p>
+</div>
+</div>
+</div>
+`;
+});
 
-    document.getElementById("best2Name").innerText = "Cart";
-    document.getElementById("best2Rank").innerText = player.cart;
+document.getElementById("panel-overall").innerHTML=html;
+}
 
-    document.getElementById("mSword").innerText = player.sword;
-    document.getElementById("mAxe").innerText = player.axe;
-    document.getElementById("mPot").innerText = player.pot;
-    document.getElementById("mNethPot").innerText = player.nethpot;
-    document.getElementById("mUHC").innerText = player.uhc;
-    document.getElementById("mSMP").innerText = player.smp;
-    document.getElementById("mDSMP").innerText = player.diamondsmp;
-    document.getElementById("mVanilla").innerText = player.vanilla;
-    document.getElementById("mMace").innerText = player.mace;
-    document.getElementById("mSpear").innerText = player.spear;
-    document.getElementById("mSM").innerText = player.spearmace;
-    document.getElementById("mCart").innerText = player.cart;
+function openModal(i){
+let p=players[i];
+document.getElementById("modal").style.display="flex";
+
+document.getElementById("modalName").innerText=p.name;
+document.getElementById("modalRank").innerText=p.rank;
+document.getElementById("modalPoints").innerText=p.region+" | "+p.points;
+
+document.getElementById("mSword").innerText=format(p.sword);
+document.getElementById("mAxe").innerText=format(p.axe);
+document.getElementById("mPot").innerText=format(p.pot);
+document.getElementById("mUHC").innerText=format(p.uhc);
+document.getElementById("mSMP").innerText=format(p.smp);
+document.getElementById("mCart").innerText=format(p.cart);
+
+// best
+let modes=[
+["Sword",p.sword],
+["Axe",p.axe],
+["Pot",p.pot],
+["UHC",p.uhc],
+["SMP",p.smp],
+["Cart",p.cart]
+];
+
+modes.sort((a,b)=>tierNum(a[1])-tierNum(b[1]));
+
+document.getElementById("best1Name").innerText=modes[0][0];
+document.getElementById("best1Rank").innerText=format(modes[0][1]);
+
+document.getElementById("best2Name").innerText=modes[1][0];
+document.getElementById("best2Rank").innerText=format(modes[1][1]);
 }
 
 function closeModal(){
-    document.getElementById("modal").style.display="none";
+document.getElementById("modal").style.display="none";
 }
 
-function displayTab(tab){
+// SEARCH
+document.getElementById("searchBox").addEventListener("input",(e)=>{
+render(e.target.value.toLowerCase());
+});
 
-    document.querySelectorAll(".tab-btn").forEach(btn=>{
-        btn.classList.remove("active");
-    });
-
-    document.getElementById("btn-"+tab).classList.add("active");
-
-    document.getElementById("panel-overall").style.display="none";
-    document.getElementById("panel-columns").style.display="none";
-
-    if(tab==="overall"){
-
-        document.getElementById("panel-overall").style.display="block";
-
-    }else{
-
-        buildColumnLayout(tab);
-
-        document.getElementById("panel-columns").style.display="block";
-    }
+// ADMIN
+function openAdmin(){
+document.getElementById("adminModal").style.display="flex";
 }
 
-function buildColumnLayout(mode){
-
-    const matrix = document.getElementById("columns-matrix");
-
-    matrix.innerHTML = "";
-
-    const tiers = [
-
-        { title:"HT1", values:["HT1"] },
-        { title:"LT1", values:["LT1"] },
-        { title:"HT2", values:["HT2"] },
-        { title:"LT2", values:["LT2"] },
-        { title:"Other", values:["HT3","LT3","HT4","LT4","HT5","LT5"] }
-
-    ];
-
-    tiers.forEach(tier=>{
-
-        let html = `
-        <div class="tier-column">
-        <div class="column-header">${tier.title}</div>
-        `;
-
-        let usedHT1 = false;
-
-        players.forEach(player=>{
-
-            const value = player[mode];
-
-            if(tier.values.includes(value)){
-
-                if(value === "HT1"){
-
-                    if(usedHT1) return;
-
-                    usedHT1 = true;
-                }
-
-                html += `
-
-                <div class="column-player">
-
-                <img src="
-                https://visage.surgeplay.com/face/64/${player.avatar}
-                ">
-
-                <div class="column-player-name">
-                ${player.name}
-                </div>
-
-                <div class="column-player-rank">
-                ${value}
-                </div>
-
-                </div>
-
-                `;
-            }
-
-        });
-
-        html += `</div>`;
-
-        matrix.innerHTML += html;
-
-    });
-
+function loginAdmin(){
+if(
+document.getElementById("adminUser").value===ADMIN_USER &&
+document.getElementById("adminPass").value===ADMIN_PASS
+){
+isAdmin=true;
+document.getElementById("adminModal").style.display="none";
+alert("Admin logged in");
+}else{
+document.getElementById("err").innerText="Wrong login";
+}
 }
 
+// INIT
+render();
 </script>
 
 </body>
