@@ -6,12 +6,12 @@
 <title>Splash Tiers</title>
 
 <style>
+
 :root{
     --bg:#030712;
     --card:#07152d;
     --card2:#101d3a;
     --cyan:#55fff5;
-    --white:#ffffff;
 }
 
 *{
@@ -39,51 +39,6 @@ body{
     margin-bottom:30px;
 }
 
-.top-buttons{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    margin-bottom:40px;
-    flex-wrap:wrap;
-}
-
-.top-btn{
-    text-decoration:none;
-    color:white;
-    font-size:24px;
-    font-weight:800;
-    padding:22px 60px;
-    border-radius:18px;
-    transition:.2s;
-}
-
-.discord-btn{ background:linear-gradient(90deg,#3955ff,#4b8fff); }
-.server-btn{ background:linear-gradient(90deg,#16b4bd,#28c88f); }
-
-.top-btn:hover{ transform:scale(1.05); }
-
-.nav-tabs{
-    background:#08152d;
-    border-radius:18px;
-    padding:16px;
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-bottom:30px;
-}
-
-.tab-btn{
-    border:none;
-    background:#101d3a;
-    color:white;
-    padding:12px 18px;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:700;
-}
-
-.tab-btn.active{ background:#5bcfd5; }
-
 .player-row{
     background:#07152d;
     border-radius:22px;
@@ -91,35 +46,62 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:20px;
+    gap:25px;
+    margin-bottom:25px;
     cursor:pointer;
 }
 
 .player-left{
     display:flex;
-    gap:20px;
     align-items:center;
+    gap:22px;
 }
 
-.rank{ font-size:50px;font-weight:900; }
+.rank{
+    font-size:60px;
+    font-weight:900;
+}
 
-.player-head img{ width:60px;height:60px; }
+.player-head img{
+    width:65px;
+    height:65px;
+}
+
+.player-info h2{
+    font-size:30px;
+}
+
+.player-info p{
+    color:#8fa9cf;
+}
 
 .row-tiers-container{
     display:grid;
     grid-template-columns:repeat(6,1fr);
     gap:10px;
+    width:100%;
+    max-width:520px;
 }
 
 .micro-tier{
     background:#101d3a;
+    border-radius:12px;
     padding:10px;
-    border-radius:10px;
     text-align:center;
 }
 
-.micro-tier-label{ font-size:12px;color:#aaa; }
-.micro-tier-rank{ font-weight:800;color:#55fff5; }
+.micro-tier-label{
+    font-size:12px;
+    color:#9ab4dc;
+}
+
+.micro-tier-rank{
+    font-size:18px;
+    font-weight:800;
+    color:var(--cyan);
+}
+
+/* MODAL */
 
 .modal-overlay{
     position:fixed;
@@ -128,31 +110,36 @@ body{
     display:none;
     justify-content:center;
     align-items:center;
+    z-index:999;
 }
 
 .modal{
-    background:#07152d;
-    padding:30px;
-    border-radius:20px;
     width:900px;
     max-width:95%;
+    background:#04132b;
+    border-radius:25px;
+    padding:35px;
+    position:relative;
 }
 
 .close-btn{
-    float:right;
+    position:absolute;
+    top:15px;
+    right:15px;
     background:red;
     border:none;
     color:white;
-    padding:10px 15px;
-    border-radius:10px;
+    width:45px;
+    height:45px;
+    border-radius:50%;
     cursor:pointer;
 }
 
 .modal-top{
     display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
+    justify-content:center;
+    gap:30px;
+    margin-bottom:25px;
 }
 
 .best-card{
@@ -163,10 +150,30 @@ body{
     text-align:center;
 }
 
+.modal-avatar{
+    text-align:center;
+}
+
+.modal-avatar img{
+    width:120px;
+    height:120px;
+}
+
+.modal-name{
+    font-size:40px;
+    font-weight:900;
+}
+
+.modal-rank{
+    color:var(--cyan);
+}
+
+/* GRID */
+
 .modal-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:10px;
+    gap:12px;
 }
 
 .modal-box{
@@ -176,22 +183,17 @@ body{
     text-align:center;
 }
 
-.search-admin{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin-bottom:20px;
+.modal-box-title{
+    color:#9ab4dc;
+    font-size:14px;
 }
 
-input{
-    padding:10px;
-    border-radius:10px;
-    border:none;
+.modal-box-rank{
+    font-size:20px;
+    font-weight:800;
+    color:var(--cyan);
 }
 
-button{
-    cursor:pointer;
-}
 </style>
 </head>
 
@@ -201,36 +203,30 @@ button{
 
 <h1 class="title">SPLASH TIERS</h1>
 
-<div class="search-admin">
-<input id="searchBox" placeholder="Search player...">
-<button onclick="openAdmin()">Admin</button>
-</div>
-
-<div class="nav-tabs">
-<button class="tab-btn active" onclick="displayTab('overall')">Overall</button>
-</div>
-
 <div id="panel-overall"></div>
 
 </div>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modal">
+
 <div class="modal">
 
-<button class="close-btn" onclick="closeModal()">X</button>
+<button class="close-btn" onclick="closeModal()">×</button>
 
 <div class="modal-top">
+
 <div class="best-card">
 <div>BEST #1</div>
 <div id="best1Name"></div>
 <div id="best1Rank"></div>
 </div>
 
-<div>
-<h2 id="modalName"></h2>
-<p id="modalRank"></p>
-<p id="modalPoints"></p>
+<div class="modal-avatar">
+<img id="modalHead">
+<div class="modal-name" id="modalName"></div>
+<div class="modal-rank" id="modalRank"></div>
+<div id="modalPoints"></div>
 </div>
 
 <div class="best-card">
@@ -238,56 +234,67 @@ button{
 <div id="best2Name"></div>
 <div id="best2Rank"></div>
 </div>
+
 </div>
 
 <div class="modal-grid">
 <div class="modal-box">Sword <div id="mSword"></div></div>
 <div class="modal-box">Axe <div id="mAxe"></div></div>
 <div class="modal-box">Pot <div id="mPot"></div></div>
+<div class="modal-box">NethPot <div id="mNethPot"></div></div>
 <div class="modal-box">UHC <div id="mUHC"></div></div>
 <div class="modal-box">SMP <div id="mSMP"></div></div>
+<div class="modal-box">Vanilla <div id="mVanilla"></div></div>
+<div class="modal-box">Mace <div id="mMace"></div></div>
 <div class="modal-box">Cart <div id="mCart"></div></div>
 </div>
 
 </div>
-</div>
 
-<!-- ADMIN -->
-<div id="adminModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);justify-content:center;align-items:center;">
-<div style="background:#07152d;padding:20px;border-radius:15px;width:300px;text-align:center;">
-<h3>Admin Login</h3>
-<input id="adminUser" placeholder="Username"><br><br>
-<input id="adminPass" type="password" placeholder="Password"><br><br>
-<button onclick="loginAdmin()">Login</button>
-<p id="err"></p>
-</div>
 </div>
 
 <script>
-const ADMIN_USER="Admin";
-const ADMIN_PASS="Lord.of.rings2";
 
-let isAdmin=false;
-
-// LOAD OR DEFAULT
-let players = JSON.parse(localStorage.getItem("players")) || [
+const players = [
 {
-name:"PvPDemon",region:"ME",rank:"Warlord",points:440,avatar:"X-Steve",
-sword:"HT3",axe:"HT4",pot:"LT4",uhc:"LT2",smp:"HT5",cart:"LT1"
+name:"PvPDemon",
+region:"ME",
+rank:"Warlord",
+points:440,
+avatar:"X-Steve",
+
+sword:"HT3",
+axe:"HT4",
+pot:"LT4",
+nethpot:"HT2",
+uhc:"LT2",
+smp:"HT5",
+vanilla:"HT4",
+mace:"HT1",
+cart:"LT1"
 },
 {
-name:"coldified",region:"EU",rank:"Elite",points:350,avatar:"Alex",
-sword:"LT1",axe:"HT3",pot:"LT4",uhc:"HT2",smp:"NONE",cart:"HT2"
+name:"coldified",
+region:"EU",
+rank:"Elite",
+points:350,
+avatar:"Alex",
+
+sword:"LT1",
+axe:"HT3",
+pot:"LT4",
+nethpot:"LT3",
+uhc:"HT2",
+smp:"NONE",
+vanilla:"HT5",
+mace:"LT2",
+cart:"HT2"
 }
 ];
 
-// SAVE SYSTEM
-function save(){
-localStorage.setItem("players", JSON.stringify(players));
-}
+// -------------------- TIER VALUE --------------------
 
-// TIER CONVERT
-function tierNum(v){
+function tierValue(v){
 if(v==="HT1"||v==="LT1")return 1;
 if(v==="HT2"||v==="LT2")return 2;
 if(v==="HT3"||v==="LT3")return 3;
@@ -296,37 +303,50 @@ if(v==="HT5"||v==="LT5")return 5;
 return 999;
 }
 
-function format(v){
-if(v==="NONE")return "NONE";
-return "TIER "+tierNum(v);
+// -------------------- AUTO BEST --------------------
+
+function getBestGamemodes(player){
+
+const modes = [
+{name:"Sword",v:player.sword},
+{name:"Axe",v:player.axe},
+{name:"Pot",v:player.pot},
+{name:"NethPot",v:player.nethpot},
+{name:"UHC",v:player.uhc},
+{name:"SMP",v:player.smp},
+{name:"Vanilla",v:player.vanilla},
+{name:"Mace",v:player.mace},
+{name:"Cart",v:player.cart}
+].filter(m=>m.v!=="NONE");
+
+modes.sort((a,b)=>tierValue(a.v)-tierValue(b.v));
+
+return {
+best1:modes[0],
+best2:modes[1]
+};
 }
 
-// SORT
-function score(p){
-let vals=[p.sword,p.axe,p.pot,p.uhc,p.smp,p.cart];
-let t=0,c=0;
-vals.forEach(v=>{if(v!=="NONE"){t+=tierNum(v);c++;}});
-return t/c;
-}
+// -------------------- RENDER --------------------
 
-function render(filter=""){
-players.sort((a,b)=>score(a)-score(b));
-save();
+function render(){
 
 let html="";
+
 players.forEach((p,i)=>{
-if(!p.name.toLowerCase().includes(filter))return;
 
 html+=`
 <div class="player-row" onclick="openModal(${i})">
+
 <div class="player-left">
 <div class="rank">${i+1}</div>
-<img src="https://visage.surgeplay.com/face/64/${p.avatar}">
-<div>
+<img src="https://visage.surgeplay.com/face/128/${p.avatar}">
+<div class="player-info">
 <h2>${p.name}</h2>
 <p>${p.rank}</p>
 </div>
 </div>
+
 </div>
 `;
 });
@@ -334,69 +354,49 @@ html+=`
 document.getElementById("panel-overall").innerHTML=html;
 }
 
+// -------------------- MODAL --------------------
+
 function openModal(i){
-let p=players[i];
+
+const p=players[i];
+
 document.getElementById("modal").style.display="flex";
+
+document.getElementById("modalHead").src=
+`https://visage.surgeplay.com/face/128/${p.avatar}`;
 
 document.getElementById("modalName").innerText=p.name;
 document.getElementById("modalRank").innerText=p.rank;
 document.getElementById("modalPoints").innerText=p.region+" | "+p.points;
 
-document.getElementById("mSword").innerText=format(p.sword);
-document.getElementById("mAxe").innerText=format(p.axe);
-document.getElementById("mPot").innerText=format(p.pot);
-document.getElementById("mUHC").innerText=format(p.uhc);
-document.getElementById("mSMP").innerText=format(p.smp);
-document.getElementById("mCart").innerText=format(p.cart);
+// BEST GAMEMODES (AUTO)
+const best = getBestGamemodes(p);
 
-// best
-let modes=[
-["Sword",p.sword],
-["Axe",p.axe],
-["Pot",p.pot],
-["UHC",p.uhc],
-["SMP",p.smp],
-["Cart",p.cart]
-];
+document.getElementById("best1Name").innerText=best.best1.name;
+document.getElementById("best1Rank").innerText=best.best1.v;
 
-modes.sort((a,b)=>tierNum(a[1])-tierNum(b[1]));
+document.getElementById("best2Name").innerText=best.best2.name;
+document.getElementById("best2Rank").innerText=best.best2.v;
 
-document.getElementById("best1Name").innerText=modes[0][0];
-document.getElementById("best1Rank").innerText=format(modes[0][1]);
+// stats
+document.getElementById("mSword").innerText=p.sword;
+document.getElementById("mAxe").innerText=p.axe;
+document.getElementById("mPot").innerText=p.pot;
+document.getElementById("mNethPot").innerText=p.nethpot;
+document.getElementById("mUHC").innerText=p.uhc;
+document.getElementById("mSMP").innerText=p.smp;
+document.getElementById("mVanilla").innerText=p.vanilla;
+document.getElementById("mMace").innerText=p.mace;
+document.getElementById("mCart").innerText=p.cart;
 
-document.getElementById("best2Name").innerText=modes[1][0];
-document.getElementById("best2Rank").innerText=format(modes[1][1]);
 }
 
 function closeModal(){
 document.getElementById("modal").style.display="none";
 }
 
-// SEARCH
-document.getElementById("searchBox").addEventListener("input",(e)=>{
-render(e.target.value.toLowerCase());
-});
-
-// ADMIN
-function openAdmin(){
-document.getElementById("adminModal").style.display="flex";
-}
-
-function loginAdmin(){
-if(
-document.getElementById("adminUser").value===ADMIN_USER &&
-document.getElementById("adminPass").value===ADMIN_PASS
-){
-isAdmin=true;
-document.getElementById("adminModal").style.display="none";
-alert("Admin logged in");
-}else{
-document.getElementById("err").innerText="Wrong login";
-}
-}
-
-// INIT
 render();
+
 </script>
 
 </body>
