@@ -3,225 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Splash Tiers | Ysf's Fortress</title>
+    <title>Splash Tiers | Official Player Card</title>
     <style>
-        :root { --primary-red: #D32F2F; --dark-bg: #0a0a0a; --card-bg: #141414; --text-white: #ffffff; }
-        body { background: var(--dark-bg); color: var(--text-white); font-family: sans-serif; margin: 0; background: radial-gradient(circle at center, #2a0000 0%, #0a0a0a 100%); background-attachment: fixed; animation: pulse 10s infinite alternate; }
-        @keyframes pulse { 0% { background-color: #0a0a0a; } 100% { background-color: #1a0000; } }
-        header { text-align: center; padding: 30px; border-bottom: 2px solid var(--primary-red); }
-        
-        /* --- ACTION BUTTONS --- */
-        .action-bar { display: flex; justify-content: center; gap: 15px; padding: 20px; }
-        .btn-discord { background: #5865F2; color: white; text-decoration: none; padding: 12px 25px; border-radius: 5px; font-weight: bold; transition: 0.3s; }
-        .btn-discord:hover { background: #4752c4; transform: translateY(-2px); }
-        .btn-copy-ip { background: #333; color: white; border: 1px solid var(--primary-red); padding: 12px 25px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        .btn-copy-ip:hover { background: var(--primary-red); }
+        /* Modern Dark Competitive Theme Style */
+        body {
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-        .gamemode-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; padding: 10px; background: rgba(0,0,0,0.5); }
-        .gamemode-nav button { background: #1a1a1a; color: white; border: 1px solid #333; padding: 10px 15px; cursor: pointer; border-radius: 5px; transition: 0.3s; }
-        .gamemode-nav button.active { background: var(--primary-red); box-shadow: 0 0 10px var(--primary-red); }
-        
-        .container { max-width: 900px; margin: 20px auto; padding: 0 20px; }
-        table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 10px; overflow: hidden; }
-        th { background: #1f1f1f; padding: 15px; text-align: left; color: var(--primary-red); }
-        td { padding: 15px; border-bottom: 1px solid #222; cursor: pointer; }
-        
-        .rank-tag { padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.8em; text-transform: uppercase; background: #300; border: 1px solid red; }
-        .region-tag { font-size: 0.7em; background: #222; padding: 2px 5px; border-radius: 3px; margin-left: 10px; color: #aaa; }
-        
-        #admin-panel { background: #1a1a1a; padding: 20px; border: 2px dashed var(--primary-red); margin-top: 40px; border-radius: 10px; }
-        input, select { background: #222; color: white; border: 1px solid #444; padding: 10px; margin: 5px; border-radius: 4px; }
-        .btn-main { background: var(--primary-red); color: white; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; border-radius: 5px; }
-        
-        #player-modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 350px; background: #141414; border: 2px solid var(--primary-red); border-radius: 15px; padding: 25px; z-index: 100; text-align: center; }
-        .overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index: 90; }
-        .tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; text-align: left; font-size: 0.9em; }
+        /* The Card Container Layout */
+        .player-card {
+            background: linear-gradient(145deg, #1f2833, #151a21);
+            border: 2px solid #66fcf1;
+            border-radius: 12px;
+            width: 420px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(102, 252, 241, 0.15);
+        }
 
-        /* Notification Toast */
-        #toast { visibility: hidden; min-width: 200px; background-color: var(--primary-red); color: #fff; text-align: center; border-radius: 5px; padding: 16px; position: fixed; z-index: 200; left: 50%; bottom: 30px; transform: translateX(-50%); }
-        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
-        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+        /* Top Header Styling */
+        .card-header {
+            text-align: center;
+            border-bottom: 2px solid #45a29e;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .brand-title {
+            color: #66fcf1;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .username {
+            color: #ffffff;
+            font-size: 28px;
+            margin: 5px 0;
+            font-weight: 800;
+        }
+
+        /* Regional & Ranking Badges */
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .region-badge {
+            background-color: #45a29e;
+            color: #0b0c10;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        /* Glowing Rank Styling (Immortal Example) */
+        .rank-badge {
+            color: #a349a4; /* Purple glow for high tier status */
+            font-weight: 900;
+            font-size: 18px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(163, 73, 164, 0.6);
+        }
+
+        .points-display {
+            font-size: 14px;
+            color: #ffffff;
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .points-highlight {
+            color: #66fcf1;
+            font-weight: bold;
+        }
+
+        /* Section Sub-headings */
+        .section-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #45a29e;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* Gamemode Grid & Lists */
+        .tier-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .tier-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(69, 162, 158, 0.2);
+            font-size: 15px;
+        }
+
+        .mode-name {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .tier-value {
+            color: #66fcf1;
+            font-weight: bold;
+        }
+
+        .points-add {
+            color: #45a29e;
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        /* Mechanics / Config Footer Layout */
+        .manifest-footer {
+            background-color: rgba(11, 12, 16, 0.5);
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        .manifest-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .manifest-item:last-child {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <h1 style="color: var(--primary-red); margin-bottom: 5px;">SPLASH TIERS</h1>
-    <p style="margin-top: 0; opacity: 0.8;">Middle East Competitive Scene</p>
-    
-    <div class="action-bar">
-        <!-- REPLACE '#' WITH YOUR DISCORD INVITE LINK -->
-        <a href="https://discord.gg/Ncp68mCF6" class="btn-discord" target="_blank">Join Discord / Request Test</a>
-        <!-- REPLACE 'play.example.com' WITH YOUR ACTUAL SERVER IP -->
-        <button class="btn-copy-ip" onclick="copyIP('play.desertia.fun')">Copy Server IP</button>
-    </div>
-</header>
-
-<nav class="gamemode-nav" id="mode-nav">
-    <button class="active" onclick="changeView('Overall', event)">Overall</button>
-</nav>
-
-<div class="container">
-    <h2 id="view-title" style="color: var(--primary-red);">Overall Rankings</h2>
-    <table id="lb-table">
-        <thead><tr id="table-head"></tr></thead>
-        <tbody id="lb-body"></tbody>
-    </table>
-
-    <div id="admin-panel">
-        <div id="auth-section">
-            <h3>Staff Login</h3>
-            <input type="text" id="user" placeholder="User">
-            <input type="password" id="pass" placeholder="Pass">
-            <button class="btn-main" onclick="login()">Login</button>
-        </div>
-        <div id="controls" style="display:none;">
-            <h3>Admin Dashboard</h3>
-            <input type="text" id="p-name" placeholder="Player IGN">
-            <select id="p-region">
-                <option value="ME">Middle East (ME)</option>
-                <option value="EU">Europe (EU)</option>
-                <option value="NA">North America (NA)</option>
-                <option value="ASIA">Asia (ASIA)</option>
-            </select>
-            <select id="p-mode"></select>
-            <select id="p-tier">
-                <option value="HT1">HT1 (60 pts)</option><option value="LT1">LT1 (45 pts)</option>
-                <option value="HT2">HT2 (20 pts)</option><option value="LT2">LT2 (20 pts)</option>
-                <option value="HT3">HT3 (10 pts)</option><option value="LT3">LT3 (6 pts)</option>
-                <option value="HT4">HT4 (4 pts)</option><option value="LT4">LT4 (3 pts)</option>
-                <option value="HT5">HT5 (2 pts)</option><option value="LT5">LT5 (1 pt)</option>
-                <option value="Unranked">Unranked (0 pts)</option>
-            </select>
-            <button class="btn-main" onclick="saveData()">Update Player</button>
-            <button onclick="logout()" style="background:none; color:grey; border:none; cursor:pointer; margin-left:10px;">Logout</button>
-        </div>
-    </div>
-</div>
-
-<div id="toast">IP Copied to Clipboard!</div>
-
-<div class="overlay" id="overlay" onclick="closeModal()"></div>
-<div id="player-modal">
-    <h2 id="m-name" style="color:var(--primary-red); margin:0;"></h2>
-    <div id="m-region" style="font-size:0.8em; color:grey; margin-bottom:10px;"></div>
-    <div id="m-rank" class="rank-tag" style="display:inline-block;"></div>
-    <div class="tier-grid" id="m-tiers"></div>
-    <button class="btn-main" onclick="closeModal()" style="margin-top:20px; width:100%;">Close</button>
-</div>
-
-<script>
-    const modes = ["Sword", "Axe", "Pot", "Neth Pot", "UHC", "SMP", "Dia SMP", "Cart", "Mace", "Vanilla"];
-    const pts = {'HT1':60,'LT1':45,'HT2':20,'LT2':20,'HT3':10,'LT3':6,'HT4':4,'LT4':3,'HT5':2,'LT5':1,'Unranked':0};
-    let players = JSON.parse(localStorage.getItem('fortress_db')) || [];
-    let currentView = 'Overall';
-
-    const nav = document.getElementById('mode-nav');
-    const modeSelect = document.getElementById('p-mode');
-    modes.forEach(m => {
-        const btn = document.createElement('button');
-        btn.innerText = m;
-        btn.onclick = (e) => changeView(m, e);
-        nav.appendChild(btn);
-        modeSelect.innerHTML += `<option value="${m}">${m}</option>`;
-    });
-
-    function copyIP(ip) {
-        navigator.clipboard.writeText(ip);
-        const x = document.getElementById("toast");
-        x.className = "show";
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-    }
-
-    function changeView(view, e) {
-        currentView = view;
-        document.querySelectorAll('.gamemode-nav button').forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
-        document.getElementById('view-title').innerText = view + " Leaderboard";
-        render();
-    }
-
-    function calculateTotal(player) {
-        return Object.values(player.tiers).reduce((a, b) => a + (pts[b] || 0), 0);
-    }
-
-    function getRankName(p) {
-        const total = calculateTotal(p);
-        if (total >= 500) return "Splash Master";
-        if (total >= 400) return "Grand Master";
-        if (total >= 250) return "Master";
-        if (total >= 100) return "Ace";
-        if (total >= 50) return "Specialist";
-        if (total >= 20) return "Cadet";
-        if (total >= 10) return "Novice";
-        return "Rookie";
-    }
-
-    function render() {
-        const head = document.getElementById('table-head');
-        const body = document.getElementById('lb-body');
-        body.innerHTML = '';
+    <!-- Official Splash Tiers Card Shell -->
+    <div class="player-card">
         
-        if (currentView === 'Overall') {
-            head.innerHTML = `<th>#</th><th>Player</th><th>Rank</th><th>Points</th>`;
-            players.sort((a,b) => calculateTotal(b) - calculateTotal(a));
-            players.forEach((p, i) => {
-                body.innerHTML += `<tr onclick="showCard('${p.name}')"><td>${i+1}</td><td>${p.name}<span class="region-tag">${p.region || 'ME'}</span></td><td><span class="rank-tag">${getRankName(p)}</span></td><td>${calculateTotal(p)}</td></tr>`;
-            });
-        } else {
-            head.innerHTML = `<th>#</th><th>Player</th><th>Tier</th><th>Points</th>`;
-            let filtered = players.filter(p => p.tiers[currentView] !== 'Unranked');
-            filtered.sort((a,b) => pts[b.tiers[currentView]] - pts[a.tiers[currentView]]);
-            filtered.forEach((p, i) => {
-                body.innerHTML += `<tr onclick="showCard('${p.name}')"><td>${i+1}</td><td>${p.name}</td><td>${p.tiers[currentView]}</td><td>${pts[p.tiers[currentView]]}</td></tr>`;
-            });
-        }
-    }
+        <div class="card-header">
+            <p class="brand-title">⚡ Splash Tiers Official Profile</p>
+            <h1 class="username">PvPDemon</h1>
+        </div>
 
-    function login() {
-        if(document.getElementById('user').value === "Ysplash_MC" && document.getElementById('pass').value === "lord.of.rings") {
-            document.getElementById('auth-section').style.display = 'none';
-            document.getElementById('controls').style.display = 'block';
-        } else { alert("Access Denied"); }
-    }
+        <div class="meta-info">
+            <span class="region-badge">REGION: ME</span>
+            <span class="rank-badge">[ Immortal ]</span>
+        </div>
+        
+        <div class="points-display">
+            Score: <span class="points-highlight">148</span> / 1100 PTS
+        </div>
 
-    function saveData() {
-        const name = document.getElementById('p-name').value;
-        const region = document.getElementById('p-region').value;
-        const mode = document.getElementById('p-mode').value;
-        const tier = document.getElementById('p-tier').value;
-        if(!name) return;
+        <div class="section-title">⚔️ Current Highest Tiers</div>
+        <ul class="tier-list">
+            <li class="tier-item">
+                <span class="mode-name">Mace</span>
+                <span><span class="tier-value">HT1</span><span class="points-add">(+100)</span></span>
+            </li>
+            <li class="tier-item">
+                <span class="mode-name">Spear-Mace</span>
+                <span><span class="tier-value">LT2</span><span class="points-add">(+25)</span></span>
+            </li>
+            <li class="tier-item">
+                <span class="mode-name">Sword</span>
+                <span><span class="tier-value">HT3</span><span class="points-add">(+12)</span></span>
+            </li>
+            <li class="tier-item">
+                <span class="mode-name">Axe</span>
+                <span><span class="tier-value">HT4</span><span class="points-add">(+5)</span></span>
+            </li>
+            <li class="tier-item">
+                <span class="mode-name">Pot</span>
+                <span><span class="tier-value">LT4</span><span class="points-add">(+3)</span></span>
+            </li>
+        </ul>
 
-        let p = players.find(x => x.name.toLowerCase() === name.toLowerCase());
-        if(!p) {
-            p = { name: name, region: region, tiers: {} };
-            modes.forEach(m => p.tiers[m] = 'Unranked');
-            players.push(p);
-        }
-        p.region = region;
-        p.tiers[mode] = tier;
-        localStorage.setItem('fortress_db', JSON.stringify(players));
-        render();
-        alert("Updated " + name);
-    }
+        <div class="section-title">⚙️ Combat Manifest</div>
+        <div class="manifest-footer">
+            <div class="manifest-item">
+                <span>Input Sensitivity:</span>
+                <span style="color: #ffffff;">111</span>
+            </div>
+            <div class="manifest-item">
+                <span>Card Registry:</span>
+                <span style="color: #45a29e;">#ME-014</span>
+            </div>
+        </div>
 
-    function logout() { location.reload(); }
+    </div>
 
-    function showCard(name) {
-        const p = players.find(x => x.name === name);
-        document.getElementById('m-name').innerText = p.name;
-        document.getElementById('m-region').innerText = "Region: " + (p.region || 'ME');
-        document.getElementById('m-rank').innerText = getRankName(p);
-        const grid = document.getElementById('m-tiers');
-        grid.innerHTML = '';
-        modes.forEach(m => { grid.innerHTML += `<div><strong>${m}:</strong> ${p.tiers[m]}</div>`; });
-        document.getElementById('overlay').style.display = 'block';
-        document.getElementById('player-modal').style.display = 'block';
-    }
-
-    function closeModal() { document.getElementById('overlay').style.display = 'none'; document.getElementById('player-modal').style.display = 'none'; }
-    render();
-</script>
 </body>
 </html>
