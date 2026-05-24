@@ -1,569 +1,542 @@
+# Complete Fixed Splash Tiers Website
+
+Copy and paste this entire file.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Splash Tiers | Complete Leaderboard Dashboard</title>
-    <style>
-        /* ==============================================================================
-           1. CUSTOM THEME BASE SYSTEM (Dark-mode Competitive Vibe)
-           ============================================================================== */
-        :root {
-            --bg-main: #0a0d14;
-            --bg-panel: #121824;
-            --bg-row: #171f2e;
-            --bg-row-hover: #1f2a3e;
-            --accent-cyan: #66fcf1;
-            --accent-blue: #45a29e;
-            --text-main: #ffffff;
-            --text-muted: #7e8e9f;
-            
-            /* Official Regional Color Palette */
-            --color-me: #f1c40f;
-            --color-as: #3498db;
-            --color-af: #9b59b6;
-            --color-eu: #2ecc71;
-            --color-na: #e74c3c;
-            --color-sa: #e67e22;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Splash Tiers</title>
 
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+<style>
+:root {
+    --bg-main: #0a0d14;
+    --bg-panel: #121824;
+    --bg-row: #171f2e;
+    --bg-row-hover: #1f2a3e;
+    --accent-cyan: #66fcf1;
+    --accent-blue: #45a29e;
+    --text-main: #ffffff;
+    --text-muted: #7e8e9f;
+}
 
-        .container {
-            width: 100%;
-            max-width: 1280px;
-        }
+body {
+    background: var(--bg-main);
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
 
-        /* ==============================================================================
-           2. NAVIGATION BAR - ALL 11 OFFICIAL SPLASH TIERS GAMEMODES
-           ============================================================================== */
-        .nav-tabs {
-            display: flex;
-            gap: 6px;
-            background-color: var(--bg-panel);
-            padding: 10px;
-            border-radius: 12px;
-            overflow-x: auto;
-            margin-bottom: 25px;
-            border: 1px solid rgba(255,255,255,0.03);
-            scrollbar-width: thin;
-        }
+.container {
+    max-width: 1400px;
+    margin: auto;
+}
 
-        .tab-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            padding: 10px 16px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            border-radius: 8px;
-            white-space: nowrap;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+.nav-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    background: var(--bg-panel);
+    padding: 10px;
+    border-radius: 10px;
+}
 
-        .tab-btn:hover {
-            color: var(--text-main);
-            background-color: rgba(255,255,255,0.02);
-        }
+.tab-btn {
+    border: none;
+    background: var(--bg-row);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
-        .tab-btn.active {
-            color: var(--text-main);
-            background-color: var(--bg-row);
-            box-shadow: inset 0 -2px 0 var(--accent-cyan);
-        }
+.tab-btn.active {
+    background: var(--accent-blue);
+}
 
-        /* ==============================================================================
-           3. OVERALL RANKINGS INTERFACE (Row Matrix)
-           ============================================================================== */
-        .view-section {
-            display: none;
-        }
+.view-section {
+    display: none;
+}
 
-        .view-section.active {
-            display: block;
-        }
+.view-section.active {
+    display: block;
+}
 
-        .leaderboard-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+.leaderboard-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
-        .player-row {
-            background-color: var(--bg-panel);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            padding: 14px 20px;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            border: 1px solid rgba(255,255,255,0.01);
-        }
+.player-row {
+    background: var(--bg-panel);
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
 
-        .player-row:hover {
-            background-color: var(--bg-row-hover);
-            transform: translateX(4px);
-        }
+.player-row:hover {
+    background: var(--bg-row-hover);
+}
 
-        .rank-num {
-            font-size: 20px;
-            font-weight: 900;
-            font-style: italic;
-            width: 40px;
-        }
-        .player-row:nth-child(1) .rank-num { color: var(--color-me); }
-        .player-row:nth-child(2) .rank-num { color: #b2bec3; }
+.rank-num {
+    font-size: 22px;
+    font-weight: bold;
+    width: 40px;
+}
 
-        .avatar-box {
-            width: 36px;
-            height: 36px;
-            background-color: rgba(0,0,0,0.25);
-            border-radius: 6px;
-            margin-right: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
+.avatar-box img {
+    width: 40px;
+    border-radius: 6px;
+}
 
-        .avatar-box img {
-            width: 28px;
-            height: auto;
-        }
+.player-details {
+    width: 220px;
+}
 
-        .player-details {
-            width: 220px;
-        }
+.player-name {
+    font-weight: bold;
+    font-size: 18px;
+}
 
-        .player-name {
-            font-size: 16px;
-            font-weight: 700;
-            margin: 0;
-        }
+.player-rank-status {
+    color: var(--text-muted);
+}
 
-        .player-rank-status {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
+.rank-points {
+    color: var(--accent-cyan);
+}
 
-        .rank-points {
-            color: var(--accent-cyan);
-            font-weight: 700;
-        }
+.row-tiers-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-left: auto;
+}
 
-        .region-badge {
-            font-size: 11px;
-            font-weight: 800;
-            padding: 4px 8px;
-            border-radius: 4px;
-            text-align: center;
-            width: 30px;
-            margin-right: 20px;
-        }
+.micro-tier {
+    background: rgba(255,255,255,0.05);
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    min-width: 50px;
+}
 
-        /* 11 Micro Tiers Display Grid inside the main row list */
-        .row-tiers-container {
-            display: flex;
-            gap: 5px;
-            flex: 1;
-            justify-content: flex-end;
-            flex-wrap: wrap;
-        }
+.micro-tier-label {
+    display: block;
+    font-size: 10px;
+    color: var(--text-muted);
+}
 
-        .micro-tier {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: rgba(0,0,0,0.2);
-            padding: 4px 6px;
-            border-radius: 4px;
-            min-width: 44px;
-            font-size: 9px;
-            font-weight: 800;
-            border: 1px solid rgba(255,255,255,0.02);
-        }
+.columns-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
 
-        .micro-tier-label {
-            color: var(--text-muted);
-            font-size: 8px;
-            text-transform: uppercase;
-            margin-bottom: 1px;
-        }
+.tier-column {
+    background: var(--bg-panel);
+    padding: 10px;
+    border-radius: 10px;
+}
 
-        /* ==============================================================================
-           4. COLUMN MODE VIEWS (Tier 1 -> Tier 5 Matrix Panels)
-           ============================================================================== */
-        .columns-container {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 12px;
-            width: 100%;
-        }
+.column-header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
 
-        .tier-column {
-            background-color: var(--bg-panel);
-            border-radius: 10px;
-            padding: 15px 10px;
-            border-top: 4px solid var(--text-muted);
-        }
-        .tier-column.t1 { border-top-color: #ff4757; }
-        .tier-column.t2 { border-top-color: #ffa502; }
-        .tier-column.t3 { border-top-color: #2ed573; }
-        .tier-column.t4 { border-top-color: #1e90ff; }
-        .tier-column.t5 { border-top-color: #747d8c; }
+.column-player-card {
+    background: var(--bg-row);
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
-        .column-header {
-            text-align: center;
-            font-size: 15px;
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
+.column-player-card img {
+    width: 28px;
+}
 
-        .column-player-list {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
 
-        .column-player-card {
-            background-color: var(--bg-row);
-            padding: 8px 10px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            font-size: 13px;
-            font-weight: 600;
-        }
-        .column-player-card .avatar-box {
-            width: 24px;
-            height: 24px;
-            margin-right: 8px;
-        }
-        .column-player-card .avatar-box img { width: 18px; }
+.modal-card {
+    background: var(--bg-panel);
+    width: 600px;
+    padding: 25px;
+    border-radius: 16px;
+}
 
-        /* ==============================================================================
-           5. SYSTEM OVERLAY POPUP MODAL (All 11 Modes Present)
-           ============================================================================== */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(4, 5, 8, 0.85);
-            backdrop-filter: blur(5px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
+.modal-header-block {
+    text-align: center;
+}
 
-        .modal-card {
-            background-color: var(--bg-panel);
-            border: 2px solid var(--accent-blue);
-            border-radius: 16px;
-            width: 520px;
-            padding: 30px;
-            position: relative;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.6);
-        }
+.modal-avatar-circle img {
+    width: 80px;
+}
 
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255,255,255,0.04);
-            border: none;
-            color: var(--text-muted);
-            font-size: 20px;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
+.modal-tiers-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
 
-        .modal-header-block {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+.modal-tier-card {
+    background: var(--bg-row);
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
 
-        .modal-avatar-circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 3px solid var(--accent-cyan);
-            margin: 0 auto 12px auto;
-            background-color: rgba(0,0,0,0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-        .modal-avatar-circle img { width: 60px; height: auto; }
-
-        .modal-username { font-size: 24px; font-weight: 800; margin: 0; }
-        
-        .modal-title-badge {
-            background-color: rgba(102, 252, 241, 0.1);
-            color: var(--accent-cyan);
-            font-weight: 700;
-            padding: 4px 14px;
-            border-radius: 12px;
-            display: inline-block;
-            font-size: 12px;
-            margin-top: 6px;
-            border: 1px solid rgba(102,252,241,0.2);
-        }
-
-        .modal-meta-row {
-            display: flex;
-            justify-content: space-between;
-            background-color: var(--bg-row);
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .modal-grid-title {
-            font-size: 11px;
-            color: var(--accent-blue);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        /* Complete 11-mode Layout Matrix Panel */
-        .modal-tiers-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            background: rgba(0,0,0,0.2);
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.02);
-        }
-
-        .modal-tier-card {
-            background-color: var(--bg-row);
-            padding: 8px;
-            border-radius: 6px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.01);
-        }
-        .modal-tier-mode {
-            font-size: 10px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-weight: bold;
-            margin-bottom: 2px;
-        }
-        .modal-tier-val {
-            font-size: 13px;
-            font-weight: 800;
-            color: var(--accent-cyan);
-        }
-    </style>
+.close-btn {
+    float: right;
+    border: none;
+    background: red;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+</style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <div class="nav-tabs">
-            <button class="tab-btn active" id="btn-overall" onclick="displayTab('overall')">🏆 Overall Rankings</button>
-            <button class="tab-btn" id="btn-sword" onclick="displayTab('sword')">Sword</button>
-            <button class="tab-btn" id="btn-axe" onclick="displayTab('axe')">Axe</button>
-            <button class="tab-btn" id="btn-pot" onclick="displayTab('pot')">Pot</button>
-            <button class="tab-btn" id="btn-nethpot" onclick="displayTab('nethpot')">NethPot</button>
-            <button class="tab-btn" id="btn-uhc" onclick="displayTab('uhc')">UHC</button>
-            <button class="tab-btn" id="btn-smp" onclick="displayTab('smp')">SMP</button>
-            <button class="tab-btn" id="btn-diamondsmp" onclick="displayTab('diamondsmp')">Diamond SMP</button>
-            <button class="tab-btn" id="btn-vanilla" onclick="displayTab('vanilla')">Vanilla</button>
-            <button class="tab-btn" id="btn-mace" onclick="displayTab('mace')">Mace</button>
-            <button class="tab-btn" id="btn-spear" onclick="displayTab('spear')">Spear</button>
-            <button class="tab-btn" id="btn-spearmace" onclick="displayTab('spearmace')">Spear Mace</button>
-        </div>
+<div class="container">
 
-        <div id="panel-overall" class="view-section active">
-            <div class="leaderboard-list">
-                
-                <div class="player-row" onclick="inspectPlayer('PvPDemon', 'ME', 'Immortal', 148, 'HT3', 'HT4', 'LT4', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'HT1', 'LT2', 'NONE')">
-                    <div class="rank-num">1.</div>
-                    <div class="avatar-box"><img src="https://visage.surgeplay.com/face/64/X-Steve"></div>
-                    <div class="player-details">
-                        <div class="player-name">PvPDemon</div>
-                        <div class="player-rank-status">Immortal (<span class="rank-points">148 pts</span>)</div>
-                    </div>
-                    <div class="region-badge" style="background-color: rgba(241,196,15,0.15); color: var(--color-me);">ME</div>
-                    
-                    <div class="row-tiers-container">
-                        <div class="micro-tier"><span class="micro-tier-label">Swd</span><span style="color:#2ecc71">HT3</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">Axe</span><span style="color:#3498db">HT4</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">Pot</span><span style="color:#747d8c">LT4</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">NPot</span><span>-</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">UHC</span><span>-</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">SMP</span><span>-</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">DSMP</span><span>-</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">Van</span><span>-</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">Mace</span><span style="color:#e74c3c">HT1</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">Spr</span><span style="color:#e67e22">LT2</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">S-M</span><span>-</span></div>
-                    </div>
-                </div>
+<div class="nav-tabs">
+<button class="tab-btn active" id="btn-overall" onclick="displayTab('overall')">Overall</button>
+<button class="tab-btn" id="btn-sword" onclick="displayTab('sword')">Sword</button>
+<button class="tab-btn" id="btn-axe" onclick="displayTab('axe')">Axe</button>
+<button class="tab-btn" id="btn-pot" onclick="displayTab('pot')">Pot</button>
+<button class="tab-btn" id="btn-nethpot" onclick="displayTab('nethpot')">NethPot</button>
+<button class="tab-btn" id="btn-uhc" onclick="displayTab('uhc')">UHC</button>
+<button class="tab-btn" id="btn-smp" onclick="displayTab('smp')">SMP</button>
+<button class="tab-btn" id="btn-diamondsmp" onclick="displayTab('diamondsmp')">Diamond SMP</button>
+<button class="tab-btn" id="btn-vanilla" onclick="displayTab('vanilla')">Vanilla</button>
+<button class="tab-btn" id="btn-mace" onclick="displayTab('mace')">Mace</button>
+<button class="tab-btn" id="btn-spear" onclick="displayTab('spear')">Spear</button>
+<button class="tab-btn" id="btn-spearmace" onclick="displayTab('spearmace')">Spear Mace</button>
+<button class="tab-btn" id="btn-cart" onclick="displayTab('cart')">Cart</button>
+</div>
 
-                <div class="player-row" onclick="inspectPlayer('coldified', 'EU', 'Warlord', 88, 'LT1', 'HT3', 'LT4', 'NONE', 'NONE', 'NONE', 'NONE', 'NONE', 'LT2', 'NONE', 'NONE')">
-                    <div class="rank-num">2.</div>
-                    <div class="avatar-box"><img src="https://visage.surgeplay.com/face/64/Alex"></div>
-                    <div class="player-details">
-                        <div class="player-name">coldified</div>
-                        <div class="player-rank-status">Warlord (<span class="rank-points">88 pts</span>)</div>
-                    </div>
-                    <div class="region-badge" style="background-color: rgba(46,213,115,0.15); color: var(--color-eu);">EU</div>
-                    
-                    <div class="row-tiers-container">
-                        <div class="micro-tier"><span class="micro-tier-label">Swd</span><span style="color:#ffa502">LT1</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">Axe</span><span style="color:#2ecc71">HT3</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">Pot</span><span style="color:#747d8c">LT4</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">NPot</span><span>-</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">UHC</span><span>-</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">SMP</span><span>-</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">DSMP</span><span>-</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">Van</span><span>-</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">Mace</span><span style="color:#ffa502">LT2</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">Spr</span><span>-</span></div>
-                        <div class="micro-tier"><span class="micro-tier-label">S-M</span><span>-</span></div>
-                    </div>
-                </div>
+<div id="panel-overall" class="view-section active">
+<div class="leaderboard-list"></div>
+</div>
 
-            </div>
-        </div>
+<div id="panel-columns" class="view-section">
+<div class="columns-container" id="columns-matrix"></div>
+</div>
 
-        <div id="panel-columns" class="view-section">
-            <div class="columns-container" id="columns-matrix">
-                </div>
-        </div>
+</div>
 
-    </div>
+<div class="modal-overlay" id="playerModal" onclick="closeInspect()">
+<div class="modal-card" onclick="event.stopPropagation()">
+<button class="close-btn" onclick="closeInspect()">X</button>
 
-    <div class="modal-overlay" id="playerModal" onclick="closeInspect()">
-        <div class="modal-card" onclick="event.stopPropagation()">
-            <button class="close-btn" onclick="closeInspect()">×</button>
-            
-            <div class="modal-header-block">
-                <div class="modal-avatar-circle">
-                    <img id="modal-img" src="https://visage.surgeplay.com/face/64/X-Steve">
-                </div>
-                <h2 class="modal-username" id="modal-name">PlayerName</h2>
-                <div class="modal-title-badge" id="modal-rank">Rank</div>
-            </div>
+<div class="modal-header-block">
+<div class="modal-avatar-circle">
+<img id="modal-img" src="">
+</div>
 
-            <div class="modal-meta-row">
-                <span>REGION: <span id="modal-region" style="color: var(--accent-cyan);">-</span></span>
-                <span>GLOBAL SCORE: <span id="modal-points" style="color: var(--accent-cyan);">0</span> / 1100</span>
-            </div>
+<h2 id="modal-name"></h2>
+<div id="modal-rank"></div>
 
-            <div class="modal-grid-title">⚔️ Complete 11-Gamemode Ledger</div>
-            <div class="modal-tiers-grid">
-                <div class="modal-tier-card"><div class="modal-tier-mode">Sword</div><div class="modal-tier-val" id="m-sword">-</div></div>
-                <div class="modal-tier-card"><div class="modal-tier-mode">Axe</div><div class="modal-tier-val" id="m-axe">-</div></div>
-                <div class="modal-tier-card"><div class="modal-tier-mode">Pot</div><div class="modal-tier-val" id="m-pot">-</div></div>
-                <div class="modal-tier-card"><div class="modal-tier-mode">NethPot</div><div class="modal-tier-val" id="m-nethpot">-</div></div>
-                <div class="modal-tier-card"><div class="modal-tier-mode">UHC</div><div class="modal-tier-val" id="m-uhc">-</div></div>
-                <div class="modal-tier-card"><div class="modal-tier-mode">SMP</div><div class="modal-tier-val" id="m-smp">-</div></div>
-                <div class="modal-tier-card"><div class="modal-tier-mode">Diamond SMP</div><div class="modal-tier-val" id="m-diamondsmp">-</div></div>
-                <div class="modal-tier-card"><div class="modal-tier-mode">Vanilla</div><div class="modal-tier-val" id="m-vanilla">-</div></div>
-                <div class="modal-tier-card"><div class="modal-tier-mode">Mace</div><div class="modal-tier-val" id="m-mace">-</div></div>
-                <div class="modal-tier-card"><div class="modal-tier-mode">Spear</div><div class="modal-tier-val" id="m-spear">-</div></div>
-                <div class="modal-tier-card"><div class="modal-tier-mode">Spear Mace</div><div class="modal-tier-val" id="m-spearmace">-</div></div>
-            </div>
-        </div>
-    </div>
+<p>
+<span id="modal-region"></span>
+|
+<span id="modal-points"></span> / 720
+</p>
+</div>
 
-    <script>
-        // Database of player data to properly render distinct columns
-        const playersDB = [
-            { name: "PvPDemon", region: "ME", rank: "Immortal", points: 148, avatar: "X-Steve", sword:"HT3", axe:"HT4", pot:"LT4", nethpot:"NONE", uhc:"NONE", smp:"NONE", diamondsmp:"NONE", vanilla:"NONE", mace:"HT1", spear:"LT2", spearmace:"NONE" },
-            { name: "coldified", region: "EU", rank: "Warlord", points: 88, avatar: "Alex", sword:"LT1", axe:"HT3", pot:"LT4", nethpot:"NONE", uhc:"NONE", smp:"NONE", diamondsmp:"NONE", vanilla:"NONE", mace:"LT2", spear:"NONE", spearmace:"NONE" }
-        ];
+<div class="modal-tiers-grid">
+<div class="modal-tier-card"><div>Sword</div><div id="m-sword"></div></div>
+<div class="modal-tier-card"><div>Axe</div><div id="m-axe"></div></div>
+<div class="modal-tier-card"><div>Pot</div><div id="m-pot"></div></div>
+<div class="modal-tier-card"><div>NethPot</div><div id="m-nethpot"></div></div>
+<div class="modal-tier-card"><div>UHC</div><div id="m-uhc"></div></div>
+<div class="modal-tier-card"><div>SMP</div><div id="m-smp"></div></div>
+<div class="modal-tier-card"><div>Diamond SMP</div><div id="m-diamondsmp"></div></div>
+<div class="modal-tier-card"><div>Vanilla</div><div id="m-vanilla"></div></div>
+<div class="modal-tier-card"><div>Mace</div><div id="m-mace"></div></div>
+<div class="modal-tier-card"><div>Spear</div><div id="m-spear"></div></div>
+<div class="modal-tier-card"><div>Spear Mace</div><div id="m-spearmace"></div></div>
+<div class="modal-tier-card"><div>Cart</div><div id="m-cart"></div></div>
+</div>
+</div>
+</div>
 
-        function displayTab(tab) {
-            // Manage Active Classes on Nav Bar Buttons
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            const activeBtn = document.getElementById('btn-' + tab) || document.getElementById('btn-overall');
-            activeBtn.classList.add('active');
+<script>
+const GAMEMODES = [
+'sword',
+'axe',
+'pot',
+'nethpot',
+'uhc',
+'smp',
+'diamondsmp',
+'vanilla',
+'mace',
+'spear',
+'spearmace',
+'cart'
+];
 
-            // Manage Panel Layer Swaps
-            document.querySelectorAll('.view-section').forEach(p => p.classList.remove('active'));
-            
-            if (tab === 'overall') {
-                document.getElementById('panel-overall').classList.add('active');
-            } else {
-                buildColumnLayout(tab);
-                document.getElementById('panel-columns').classList.add('active');
-            }
-        }
+const tierPoints = {
+'HT1': 60,
+'LT1': 55,
+'HT2': 50,
+'LT2': 45,
+'HT3': 40,
+'LT3': 35,
+'HT4': 30,
+'LT4': 25,
+'HT5': 20,
+'LT5': 15,
+'NONE': 0
+};
 
-        // Dynamically builds Tier 1 to Tier 5 boards for any clicked gamemode
-        function buildColumnLayout(gamemode) {
-            const matrix = document.getElementById('columns-matrix');
-            matrix.innerHTML = ''; // Wipe previous panel cards
+const playersDB = [
+{
+name: 'PvPDemon',
+region: 'ME',
+avatar: 'X-Steve',
 
-            // Build structural layouts for all 5 tiers
-            const tiers = [
-                { title: "🏆 Tier 1", keyMatches: ["HT1", "LT1"], class: "t1" },
-                { title: "🥈 Tier 2", keyMatches: ["HT2", "LT2"], class: "t2" },
-                { title: "🥉 Tier 3", keyMatches: ["HT3", "LT3"], class: "t3" },
-                { title: "⚔️ Tier 4", keyMatches: ["HT4", "LT4"], class: "t4" },
-                { title: "💀 Tier 5", keyMatches: ["HT5", "LT5"], class: "t5" }
-            ];
+sword: 'HT3',
+axe: 'HT4',
+pot: 'LT4',
+nethpot: 'HT2',
+uhc: 'LT2',
+smp: 'HT5',
+diamondsmp: 'NONE',
+vanilla: 'HT4',
+mace: 'HT1',
+spear: 'LT2',
+spearmace: 'HT3',
+cart: 'LT1'
+},
 
-            tiers.forEach(t => {
-                let colHTML = `<div class="tier-column ${t.class}"><div class="column-header">${t.title}</div><div class="column-player-list">`;
-                
-                // Find and sort matching accounts belonging to this tier selection
-                playersDB.forEach(p => {
-                    const playerTier = p[gamemode];
-                    if (t.keyMatches.includes(playerTier)) {
-                        colHTML += `
-                            <div class="column-player-card">
-                                <div class="avatar-box"><img src="https://visage.surgeplay.com/face/64/${p.avatar}"></div>
-                                <span>${p.name} <small style="color:var(--accent-cyan)">(${playerTier})</small></span>
-                            </div>`;
-                    }
-                });
+{
+name: 'coldified',
+region: 'EU',
+avatar: 'Alex',
 
-                colHTML += `</div></div>`;
-                matrix.innerHTML += colHTML;
-            });
-        }
+sword: 'LT1',
+axe: 'HT3',
+pot: 'LT4',
+nethpot: 'LT3',
+uhc: 'HT2',
+smp: 'NONE',
+diamondsmp: 'NONE',
+vanilla: 'HT5',
+mace: 'LT2',
+spear: 'NONE',
+spearmace: 'HT4',
+cart: 'HT2'
+}
+];
 
-        // Hydrates all 11 fields inside the custom profile box popup modal
-        function inspectPlayer(name, reg, rank, pts, swd, axe, pot, npot, uhc, smp, dsmp, van, mace, spr, sm) {
-            document.getElementById('modal-name').innerText = name;
-            document.getElementById('modal-region').innerText = reg + " Region";
-            document.getElementById('modal-rank').innerText = rank.toUpperCase();
-            document.getElementById('modal-points').innerText = pts;
-            
-            // Map 11 distinct items cleanly
-            document.getElementById('m-sword').innerText = swd === 'NONE' ? '-' : swd;
-            document.getElementById('m-axe').innerText = axe === 'NONE' ? '-' : axe;
-            document.getElementById('m-pot').innerText = pot === 'NONE' ? '-' : pot;
-            document.getElementById('m-nethpot').innerText = npot === 'NONE' ? '-' : npot;
-            document.getElementById('m-uhc').innerText = uhc === 'NONE' ? '-' : uhc;
-            document.getElementById('m-smp').innerText = smp === '
+function calculatePoints(player) {
+let total = 0;
+
+GAMEMODES.forEach(mode => {
+total += tierPoints[player[mode]] || 0;
+});
+
+return total;
+}
+
+function getRank(points) {
+if (points >= 600) return 'Godlike';
+if (points >= 500) return 'Immortal';
+if (points >= 400) return 'Warlord';
+if (points >= 300) return 'Elite';
+if (points >= 200) return 'Knight';
+return 'Rookie';
+}
+
+function buildTierCards(player) {
+
+const names = {
+sword: 'Swd',
+axe: 'Axe',
+pot: 'Pot',
+nethpot: 'NPot',
+uhc: 'UHC',
+smp: 'SMP',
+diamondsmp: 'DSMP',
+vanilla: 'Van',
+mace: 'Mace',
+spear: 'Spr',
+spearmace: 'S-M',
+cart: 'Cart'
+};
+
+let html = '';
+
+GAMEMODES.forEach(mode => {
+html += `
+<div class="micro-tier">
+<span class="micro-tier-label">${names[mode]}</span>
+<span>${player[mode]}</span>
+</div>
+`;
+});
+
+return html;
+}
+
+function buildLeaderboard() {
+
+const leaderboard = document.querySelector('.leaderboard-list');
+leaderboard.innerHTML = '';
+
+playersDB.forEach(player => {
+player.points = calculatePoints(player);
+player.rank = getRank(player.points);
+});
+
+playersDB.sort((a,b) => b.points - a.points);
+
+playersDB.forEach((player,index) => {
+
+const row = document.createElement('div');
+row.className = 'player-row';
+row.onclick = () => inspectPlayer(player);
+
+row.innerHTML = `
+<div class="rank-num">${index + 1}</div>
+
+<div class="avatar-box">
+<img src="https://visage.surgeplay.com/face/64/${player.avatar}">
+</div>
+
+<div class="player-details">
+<div class="player-name">${player.name}</div>
+<div class="player-rank-status">
+${player.rank}
+(<span class="rank-points">${player.points} pts</span>)
+</div>
+</div>
+
+<div class="row-tiers-container">
+${buildTierCards(player)}
+</div>
+`;
+
+leaderboard.appendChild(row);
+});
+}
+
+function displayTab(tab) {
+
+ document.querySelectorAll('.tab-btn').forEach(btn => {
+ btn.classList.remove('active');
+ });
+
+ document.getElementById('btn-' + tab).classList.add('active');
+
+ document.querySelectorAll('.view-section').forEach(section => {
+ section.classList.remove('active');
+ });
+
+ if (tab === 'overall') {
+ document.getElementById('panel-overall').classList.add('active');
+ return;
+ }
+
+ buildColumnLayout(tab);
+ document.getElementById('panel-columns').classList.add('active');
+}
+
+function buildColumnLayout(gamemode) {
+
+const matrix = document.getElementById('columns-matrix');
+matrix.innerHTML = '';
+
+const tiers = [
+{ title: 'Tier 1', matches: ['HT1','LT1'] },
+{ title: 'Tier 2', matches: ['HT2','LT2'] },
+{ title: 'Tier 3', matches: ['HT3','LT3'] },
+{ title: 'Tier 4', matches: ['HT4','LT4'] },
+{ title: 'Tier 5', matches: ['HT5','LT5'] }
+];
+
+ tiers.forEach(tier => {
+
+ let html = `
+ <div class="tier-column">
+ <div class="column-header">${tier.title}</div>
+ `;
+
+ playersDB.forEach(player => {
+
+ if (tier.matches.includes(player[gamemode])) {
+ html += `
+ <div class="column-player-card">
+ <img src="https://visage.surgeplay.com/face/64/${player.avatar}">
+ <span>${player.name} (${player[gamemode]})</span>
+ </div>
+ `;
+ }
+ });
+
+ html += `</div>`;
+ matrix.innerHTML += html;
+ });
+}
+
+function inspectPlayer(player) {
+
+ document.getElementById('playerModal').style.display = 'flex';
+
+ document.getElementById('modal-img').src =
+ `https://visage.surgeplay.com/face/64/${player.avatar}`;
+
+ document.getElementById('modal-name').innerText = player.name;
+ document.getElementById('modal-rank').innerText = player.rank;
+ document.getElementById('modal-region').innerText = player.region;
+ document.getElementById('modal-points').innerText = player.points;
+
+ document.getElementById('m-sword').innerText = player.sword;
+ document.getElementById('m-axe').innerText = player.axe;
+ document.getElementById('m-pot').innerText = player.pot;
+ document.getElementById('m-nethpot').innerText = player.nethpot;
+ document.getElementById('m-uhc').innerText = player.uhc;
+ document.getElementById('m-smp').innerText = player.smp;
+ document.getElementById('m-diamondsmp').innerText = player.diamondsmp;
+ document.getElementById('m-vanilla').innerText = player.vanilla;
+ document.getElementById('m-mace').innerText = player.mace;
+ document.getElementById('m-spear').innerText = player.spear;
+ document.getElementById('m-spearmace').innerText = player.spearmace;
+ document.getElementById('m-cart').innerText = player.cart;
+}
+
+function closeInspect() {
+document.getElementById('playerModal').style.display = 'none';
+}
+
+buildLeaderboard();
+</script>
+
+</body>
+</html>
+```
