@@ -11,7 +11,7 @@
     --bg:#030712;
     --card:#07152d;
     --card2:#101d3a;
-    --can:#55fff5;
+    --cyan:#55fff5;
     --white:#ffffff;
 }
 
@@ -127,6 +127,8 @@ body{
 .player-head img{
     width:65px;
     height:65px;
+    object-fit:cover;
+    border-radius:50%;
 }
 
 .player-info h2{
@@ -206,6 +208,8 @@ body{
 .column-player img{
     width:60px;
     height:60px;
+    object-fit:cover;
+    border-radius:50%;
     margin-bottom:10px;
 }
 
@@ -257,41 +261,8 @@ body{
 .modal-top{
     display:flex;
     justify-content:center;
-    align-items:flex-start;
-    gap:40px;
+    align-items:center;
     margin-bottom:30px;
-}
-
-.best-card{
-    background:#07152d;
-    border:1px solid #13456e;
-    border-radius:20px;
-    width:180px;
-    padding:20px;
-    text-align:center;
-}
-
-.best-title{
-    color:var(--cyan);
-    font-size:16px;
-    font-weight:900;
-    margin-bottom:12px;
-}
-
-.best-mode-icon{
-    font-size:58px;
-    margin:15px 0;
-}
-
-.best-mode-name{
-    font-size:24px;
-    font-weight:900;
-}
-
-.best-mode-rank{
-    color:var(--cyan);
-    font-size:22px;
-    font-weight:900;
 }
 
 .modal-avatar{
@@ -303,6 +274,8 @@ body{
 .modal-avatar img{
     width:120px;
     height:120px;
+    object-fit:cover;
+    border-radius:50%;
 }
 
 .modal-name{
@@ -361,11 +334,6 @@ body{
 
     .columns-container{
         grid-template-columns:1fr;
-    }
-
-    .modal-top{
-        flex-direction:column;
-        align-items:center;
     }
 
     .modal-grid{
@@ -433,77 +401,30 @@ body{
 <div class="rank">1</div>
 
 <div class="player-head">
-<img src="https://visage.surgeplay.com/face/128/X-Steve">
+<img src="images/Ysplash_CC.png">
 </div>
 
 <div class="player-info">
 <h2>Ysplash_CC</h2>
-<p>Combat Cadat <span>(23 pts)</span></p>
+<p>Combat Cadet <span>(23 pts)</span></p>
 </div>
 
 </div>
 
 <div class="row-tiers-container">
 
-<div class="micro-tier">
-<div class="micro-tier-label">Swd</div>
-<div class="micro-tier-rank">HT5</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Axe</div>
-<div class="micro-tier-rank">HT5</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Pot</div>
-<div class="micro-tier-rank">HT5</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">NPot</div>
-<div class="micro-tier-rank">LT5</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">UHC</div>
-<div class="micro-tier-rank">HT5</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">SMP</div>
-<div class="micro-tier-rank">HT5</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">DSMP</div>
-<div class="micro-tier-rank">HT5</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Van</div>
-<div class="micro-tier-rank">LT4</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Mace</div>
-<div class="micro-tier-rank">HT4</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Spr</div>
-<div class="micro-tier-rank">NONE</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">S-M</div>
-<div class="micro-tier-rank">LT5</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Cart</div>
-<div class="micro-tier-rank">HT5</div>
-</div>
+<div class="micro-tier"><div class="micro-tier-label">Swd</div><div class="micro-tier-rank">HT5</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Axe</div><div class="micro-tier-rank">HT5</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Pot</div><div class="micro-tier-rank">HT5</div></div>
+<div class="micro-tier"><div class="micro-tier-label">NPot</div><div class="micro-tier-rank">LT5</div></div>
+<div class="micro-tier"><div class="micro-tier-label">UHC</div><div class="micro-tier-rank">HT5</div></div>
+<div class="micro-tier"><div class="micro-tier-label">SMP</div><div class="micro-tier-rank">HT5</div></div>
+<div class="micro-tier"><div class="micro-tier-label">DSMP</div><div class="micro-tier-rank">HT5</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Van</div><div class="micro-tier-rank">LT4</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Mace</div><div class="micro-tier-rank">HT4</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Spr</div><div class="micro-tier-rank">NONE</div></div>
+<div class="micro-tier"><div class="micro-tier-label">S-M</div><div class="micro-tier-rank">LT5</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Cart</div><div class="micro-tier-rank">HT5</div></div>
 
 </div>
 
@@ -516,77 +437,30 @@ body{
 <div class="rank">2</div>
 
 <div class="player-head">
-<img src="https://visage.surgeplay.com/face/128/X-Steve">
+<img src="images/NinjaRLCS.png">
 </div>
 
 <div class="player-info">
 <h2>NinjaRLCS</h2>
-<p>Rokkie <span>(7 pts)</span></p>
+<p>Rookie <span>(7 pts)</span></p>
 </div>
 
 </div>
 
 <div class="row-tiers-container">
 
-<div class="micro-tier">
-<div class="micro-tier-label">Swd</div>
-<div class="micro-tier-rank">HT5</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Axe</div>
-<div class="micro-tier-rank">NONE</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Pot</div>
-<div class="micro-tier-rank">NONE</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">NPot</div>
-<div class="micro-tier-rank">NONE</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">UHC</div>
-<div class="micro-tier-rank">NONE</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">SMP</div>
-<div class="micro-tier-rank">NONE</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">DSMP</div>
-<div class="micro-tier-rank">LT5</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Van</div>
-<div class="micro-tier-rank">LT5</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Mace</div>
-<div class="micro-tier-rank">HT5</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Spr</div>
-<div class="micro-tier-rank">NONE</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">S-M</div>
-<div class="micro-tier-rank">NONE</div>
-</div>
-
-<div class="micro-tier">
-<div class="micro-tier-label">Cart</div>
-<div class="micro-tier-rank">LT5</div>
-</div>
+<div class="micro-tier"><div class="micro-tier-label">Swd</div><div class="micro-tier-rank">HT5</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Axe</div><div class="micro-tier-rank">NONE</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Pot</div><div class="micro-tier-rank">NONE</div></div>
+<div class="micro-tier"><div class="micro-tier-label">NPot</div><div class="micro-tier-rank">NONE</div></div>
+<div class="micro-tier"><div class="micro-tier-label">UHC</div><div class="micro-tier-rank">NONE</div></div>
+<div class="micro-tier"><div class="micro-tier-label">SMP</div><div class="micro-tier-rank">NONE</div></div>
+<div class="micro-tier"><div class="micro-tier-label">DSMP</div><div class="micro-tier-rank">LT5</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Van</div><div class="micro-tier-rank">LT5</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Mace</div><div class="micro-tier-rank">HT5</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Spr</div><div class="micro-tier-rank">NONE</div></div>
+<div class="micro-tier"><div class="micro-tier-label">S-M</div><div class="micro-tier-rank">NONE</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Cart</div><div class="micro-tier-rank">LT5</div></div>
 
 </div>
 
@@ -606,39 +480,18 @@ body{
 
 <button class="close-btn" onclick="closeModal()">×</button>
 
-<div class="modal-avatar">
-
 <div class="modal-top">
 
-<div class="best-card">
+<div class="modal-avatar">
 
-<div class="best-title">
-BEST GAMEMODE #1
-</div>
-
-<div class="best-mode-icon">
-🔨
-</div>
-
-<div class="best-mode-name" id="best1Name">
-Mace
-</div>
-
-<div class="best-mode-rank" id="best1Rank">
-HT4
-</div>
-
-</div>
-    
-<img id="modalHead"
-src="https://visage.surgeplay.com/face/128/X-Steve">
+<img id="modalHead" src="images/Ysplash_CC.png">
 
 <div class="modal-name" id="modalName">
 Ysplash_CC
 </div>
 
 <div class="modal-rank" id="modalRank">
-Combat Cadat
+Combat Cadet
 </div>
 
 <div class="modal-points" id="modalPoints">
@@ -647,89 +500,22 @@ ME | 23 / 720
 
 </div>
 
-<div class="best-card">
-
-<div class="best-title">
-BEST GAMEMODE #2
-</div>
-
-<div class="best-mode-icon">
-💎
-</div>
-
-<div class="best-mode-name" id="best2Name">
-Vanilla
-</div>
-
-<div class="best-mode-rank" id="best2Rank">
-LT4
-</div>
-
-</div>
-
 </div>
 
 <div class="modal-grid">
 
-<div class="modal-box">
-<div class="modal-box-title">Sword</div>
-<div class="modal-box-rank" id="mSword">HT5</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Axe</div>
-<div class="modal-box-rank" id="mAxe">HT5</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Pot</div>
-<div class="modal-box-rank" id="mPot">HT5</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">NethPot</div>
-<div class="modal-box-rank" id="mNethPot">LT5</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">UHC</div>
-<div class="modal-box-rank" id="mUHC">HT5</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">SMP</div>
-<div class="modal-box-rank" id="mSMP">HT5</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Diamond SMP</div>
-<div class="modal-box-rank" id="mDSMP">HT5</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Vanilla</div>
-<div class="modal-box-rank" id="mVanilla">LT4</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Mace</div>
-<div class="modal-box-rank" id="mMace">HT4</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Spear</div>
-<div class="modal-box-rank" id="mSpear">NONE</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Spear Mace</div>
-<div class="modal-box-rank" id="mSM">LT5</div>
-</div>
-
-<div class="modal-box">
-<div class="modal-box-title">Cart</div>
-<div class="modal-box-rank" id="mCart">HT5</div>
-</div>
+<div class="modal-box"><div class="modal-box-title">Sword</div><div class="modal-box-rank" id="mSword">HT5</div></div>
+<div class="modal-box"><div class="modal-box-title">Axe</div><div class="modal-box-rank" id="mAxe">HT5</div></div>
+<div class="modal-box"><div class="modal-box-title">Pot</div><div class="modal-box-rank" id="mPot">HT5</div></div>
+<div class="modal-box"><div class="modal-box-title">NethPot</div><div class="modal-box-rank" id="mNethPot">LT5</div></div>
+<div class="modal-box"><div class="modal-box-title">UHC</div><div class="modal-box-rank" id="mUHC">HT5</div></div>
+<div class="modal-box"><div class="modal-box-title">SMP</div><div class="modal-box-rank" id="mSMP">HT5</div></div>
+<div class="modal-box"><div class="modal-box-title">Diamond SMP</div><div class="modal-box-rank" id="mDSMP">HT5</div></div>
+<div class="modal-box"><div class="modal-box-title">Vanilla</div><div class="modal-box-rank" id="mVanilla">LT4</div></div>
+<div class="modal-box"><div class="modal-box-title">Mace</div><div class="modal-box-rank" id="mMace">HT4</div></div>
+<div class="modal-box"><div class="modal-box-title">Spear</div><div class="modal-box-rank" id="mSpear">NONE</div></div>
+<div class="modal-box"><div class="modal-box-title">Spear Mace</div><div class="modal-box-rank" id="mSM">LT5</div></div>
+<div class="modal-box"><div class="modal-box-title">Cart</div><div class="modal-box-rank" id="mCart">HT5</div></div>
 
 </div>
 
@@ -746,7 +532,7 @@ const players = [
     region:"ME",
     rank:"Combat Cadet",
     points:23,
-    avatar:"X-Steve",
+    avatar:"images/Ysplash_CC.png",
 
     sword:"HT5",
     axe:"HT5",
@@ -763,11 +549,11 @@ const players = [
 },
 
 {
-    name:"Ninjarlcs",
+    name:"NinjaRLCS",
     region:"ME",
     rank:"Rookie",
     points:7,
-    avatar:"Steve",
+    avatar:"images/NinjaRLCS.png",
 
     sword:"HT5",
     axe:"NONE",
@@ -789,8 +575,7 @@ function openModal(player){
 
     document.getElementById("modal").style.display="flex";
 
-    document.getElementById("modalHead").src =
-    `https://visage.surgeplay.com/face/128/${player.avatar}`;
+    document.getElementById("modalHead").src = player.avatar;
 
     document.getElementById("modalName").innerText = player.name;
 
@@ -798,12 +583,6 @@ function openModal(player){
 
     document.getElementById("modalPoints").innerText =
     `${player.region} | ${player.points} / 720`;
-
-    document.getElementById("best1Name").innerText = "Mace";
-    document.getElementById("best1Rank").innerText = player.mace;
-
-    document.getElementById("best2Name").innerText = "Cart";
-    document.getElementById("best2Rank").innerText = player.cart;
 
     document.getElementById("mSword").innerText = player.sword;
     document.getElementById("mAxe").innerText = player.axe;
@@ -869,28 +648,17 @@ function buildColumnLayout(mode){
         <div class="column-header">${tier.title}</div>
         `;
 
-        let usedHT1 = false;
-
         players.forEach(player=>{
 
             const value = player[mode];
 
             if(tier.values.includes(value)){
 
-                if(value === "HT1"){
-
-                    if(usedHT1) return;
-
-                    usedHT1 = true;
-                }
-
                 html += `
 
                 <div class="column-player">
 
-                <img src="
-                https://visage.surgeplay.com/face/64/${player.avatar}
-                ">
+                <img src="${player.avatar}">
 
                 <div class="column-player-name">
                 ${player.name}
