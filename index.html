@@ -12,7 +12,6 @@
     --card:#07152d;
     --card2:#101d3a;
     --cyan:#55fff5;
-    --white:#ffffff;
 }
 
 *{
@@ -88,11 +87,6 @@ body{
     border-radius:12px;
     cursor:pointer;
     font-weight:700;
-    transition:.2s;
-}
-
-.tab-btn:hover{
-    background:#183056;
 }
 
 .tab-btn.active{
@@ -108,7 +102,6 @@ body{
     align-items:center;
     gap:25px;
     margin-bottom:25px;
-    overflow:hidden;
     cursor:pointer;
 }
 
@@ -127,8 +120,8 @@ body{
 .player-head img{
     width:65px;
     height:65px;
-    object-fit:cover;
     border-radius:50%;
+    object-fit:cover;
 }
 
 .player-info h2{
@@ -186,7 +179,6 @@ body{
     background:#07152d;
     border-radius:20px;
     padding:20px;
-    min-height:400px;
 }
 
 .column-header{
@@ -208,8 +200,8 @@ body{
 .column-player img{
     width:60px;
     height:60px;
-    object-fit:cover;
     border-radius:50%;
+    object-fit:cover;
     margin-bottom:10px;
 }
 
@@ -261,7 +253,6 @@ body{
 .modal-top{
     display:flex;
     justify-content:center;
-    align-items:center;
     margin-bottom:30px;
 }
 
@@ -274,8 +265,8 @@ body{
 .modal-avatar img{
     width:120px;
     height:120px;
-    object-fit:cover;
     border-radius:50%;
+    object-fit:cover;
 }
 
 .modal-name{
@@ -311,35 +302,12 @@ body{
 .modal-box-title{
     color:#9ab4dc;
     margin-bottom:10px;
-    font-size:18px;
 }
 
 .modal-box-rank{
     color:var(--cyan);
     font-size:24px;
     font-weight:900;
-}
-
-@media(max-width:1100px){
-
-    .player-row{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-
-    .row-tiers-container{
-        grid-template-columns:repeat(3,1fr);
-        max-width:100%;
-    }
-
-    .columns-container{
-        grid-template-columns:1fr;
-    }
-
-    .modal-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
 }
 
 </style>
@@ -365,29 +333,17 @@ body{
 <div class="nav-tabs">
 
 <button class="tab-btn active" id="btn-overall" onclick="displayTab('overall')">Overall</button>
-
 <button class="tab-btn" id="btn-sword" onclick="displayTab('sword')">Sword</button>
-
 <button class="tab-btn" id="btn-axe" onclick="displayTab('axe')">Axe</button>
-
 <button class="tab-btn" id="btn-pot" onclick="displayTab('pot')">Pot</button>
-
 <button class="tab-btn" id="btn-nethpot" onclick="displayTab('nethpot')">NethPot</button>
-
 <button class="tab-btn" id="btn-uhc" onclick="displayTab('uhc')">UHC</button>
-
 <button class="tab-btn" id="btn-smp" onclick="displayTab('smp')">SMP</button>
-
 <button class="tab-btn" id="btn-diamondsmp" onclick="displayTab('diamondsmp')">Diamond SMP</button>
-
 <button class="tab-btn" id="btn-vanilla" onclick="displayTab('vanilla')">Vanilla</button>
-
 <button class="tab-btn" id="btn-mace" onclick="displayTab('mace')">Mace</button>
-
 <button class="tab-btn" id="btn-spear" onclick="displayTab('spear')">Spear</button>
-
 <button class="tab-btn" id="btn-spearmace" onclick="displayTab('spearmace')">Spear Mace</button>
-
 <button class="tab-btn" id="btn-cart" onclick="displayTab('cart')">Cart</button>
 
 </div>
@@ -498,24 +454,32 @@ Combat Cadet
 ME | 23 / 720
 </div>
 
+<div class="modal-points" id="modalPlatform">
+☕ Java Edition
+</div>
+
+<div class="modal-points" id="modalDevice">
+🖥️ PC
+</div>
+
 </div>
 
 </div>
 
 <div class="modal-grid">
 
-<div class="modal-box"><div class="modal-box-title">Sword</div><div class="modal-box-rank" id="mSword">HT5</div></div>
-<div class="modal-box"><div class="modal-box-title">Axe</div><div class="modal-box-rank" id="mAxe">HT5</div></div>
-<div class="modal-box"><div class="modal-box-title">Pot</div><div class="modal-box-rank" id="mPot">HT5</div></div>
-<div class="modal-box"><div class="modal-box-title">NethPot</div><div class="modal-box-rank" id="mNethPot">LT5</div></div>
-<div class="modal-box"><div class="modal-box-title">UHC</div><div class="modal-box-rank" id="mUHC">HT5</div></div>
-<div class="modal-box"><div class="modal-box-title">SMP</div><div class="modal-box-rank" id="mSMP">HT5</div></div>
-<div class="modal-box"><div class="modal-box-title">Diamond SMP</div><div class="modal-box-rank" id="mDSMP">HT5</div></div>
-<div class="modal-box"><div class="modal-box-title">Vanilla</div><div class="modal-box-rank" id="mVanilla">LT4</div></div>
-<div class="modal-box"><div class="modal-box-title">Mace</div><div class="modal-box-rank" id="mMace">HT4</div></div>
-<div class="modal-box"><div class="modal-box-title">Spear</div><div class="modal-box-rank" id="mSpear">NONE</div></div>
-<div class="modal-box"><div class="modal-box-title">Spear Mace</div><div class="modal-box-rank" id="mSM">LT5</div></div>
-<div class="modal-box"><div class="modal-box-title">Cart</div><div class="modal-box-rank" id="mCart">HT5</div></div>
+<div class="modal-box"><div class="modal-box-title">Sword</div><div class="modal-box-rank" id="mSword"></div></div>
+<div class="modal-box"><div class="modal-box-title">Axe</div><div class="modal-box-rank" id="mAxe"></div></div>
+<div class="modal-box"><div class="modal-box-title">Pot</div><div class="modal-box-rank" id="mPot"></div></div>
+<div class="modal-box"><div class="modal-box-title">NethPot</div><div class="modal-box-rank" id="mNethPot"></div></div>
+<div class="modal-box"><div class="modal-box-title">UHC</div><div class="modal-box-rank" id="mUHC"></div></div>
+<div class="modal-box"><div class="modal-box-title">SMP</div><div class="modal-box-rank" id="mSMP"></div></div>
+<div class="modal-box"><div class="modal-box-title">Diamond SMP</div><div class="modal-box-rank" id="mDSMP"></div></div>
+<div class="modal-box"><div class="modal-box-title">Vanilla</div><div class="modal-box-rank" id="mVanilla"></div></div>
+<div class="modal-box"><div class="modal-box-title">Mace</div><div class="modal-box-rank" id="mMace"></div></div>
+<div class="modal-box"><div class="modal-box-title">Spear</div><div class="modal-box-rank" id="mSpear"></div></div>
+<div class="modal-box"><div class="modal-box-title">Spear Mace</div><div class="modal-box-rank" id="mSM"></div></div>
+<div class="modal-box"><div class="modal-box-title">Cart</div><div class="modal-box-rank" id="mCart"></div></div>
 
 </div>
 
@@ -532,7 +496,11 @@ const players = [
     region:"ME",
     rank:"Combat Cadet",
     points:23,
+
     avatar:"images/Ysplash_CC.png",
+
+    platform:"Java",
+    device:"PC",
 
     sword:"HT5",
     axe:"HT5",
@@ -553,7 +521,11 @@ const players = [
     region:"ME",
     rank:"Rookie",
     points:7,
+
     avatar:"images/NinjaRLCS.png",
+
+    platform:"Bedrock",
+    device:"Mobile",
 
     sword:"HT5",
     axe:"NONE",
@@ -584,6 +556,23 @@ function openModal(player){
     document.getElementById("modalPoints").innerText =
     `${player.region} | ${player.points} / 720`;
 
+    let platformIcon = "☕";
+
+    if(player.platform === "Bedrock"){
+        platformIcon = "📱";
+    }
+
+    document.getElementById("modalPlatform").innerText =
+    `${platformIcon} ${player.platform} Edition`;
+
+    let deviceIcon = "🖥️";
+
+    if(player.device === "Mobile") deviceIcon = "📱";
+    if(player.device === "Console") deviceIcon = "🎮";
+
+    document.getElementById("modalDevice").innerText =
+    `${deviceIcon} ${player.device}`;
+
     document.getElementById("mSword").innerText = player.sword;
     document.getElementById("mAxe").innerText = player.axe;
     document.getElementById("mPot").innerText = player.pot;
@@ -600,87 +589,6 @@ function openModal(player){
 
 function closeModal(){
     document.getElementById("modal").style.display="none";
-}
-
-function displayTab(tab){
-
-    document.querySelectorAll(".tab-btn").forEach(btn=>{
-        btn.classList.remove("active");
-    });
-
-    document.getElementById("btn-"+tab).classList.add("active");
-
-    document.getElementById("panel-overall").style.display="none";
-    document.getElementById("panel-columns").style.display="none";
-
-    if(tab==="overall"){
-
-        document.getElementById("panel-overall").style.display="block";
-
-    }else{
-
-        buildColumnLayout(tab);
-
-        document.getElementById("panel-columns").style.display="block";
-    }
-}
-
-function buildColumnLayout(mode){
-
-    const matrix = document.getElementById("columns-matrix");
-
-    matrix.innerHTML = "";
-
-    const tiers = [
-
-        { title:"Tier 1", values:["HT1", "LT1"] },
-        { title:"Tier 2", values:["HT2", "LT2"] },
-        { title:"Tier 3", values:["HT3", "LT3"] },
-        { title:"Tier 4", values:["HT4", "LT4"] },
-        { title:"Tier 5", values:["HT5","LT5"] }
-
-    ];
-
-    tiers.forEach(tier=>{
-
-        let html = `
-        <div class="tier-column">
-        <div class="column-header">${tier.title}</div>
-        `;
-
-        players.forEach(player=>{
-
-            const value = player[mode];
-
-            if(tier.values.includes(value)){
-
-                html += `
-
-                <div class="column-player">
-
-                <img src="${player.avatar}">
-
-                <div class="column-player-name">
-                ${player.name}
-                </div>
-
-                <div class="column-player-rank">
-                ${value}
-                </div>
-
-                </div>
-
-                `;
-            }
-
-        });
-
-        html += `</div>`;
-
-        matrix.innerHTML += html;
-
-    });
-
 }
 
 </script>
