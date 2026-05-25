@@ -165,58 +165,6 @@ body{
     font-weight:800;
 }
 
-#panel-columns{
-    display:none;
-}
-
-.columns-container{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:20px;
-}
-
-.tier-column{
-    background:#07152d;
-    border-radius:20px;
-    padding:20px;
-}
-
-.column-header{
-    text-align:center;
-    font-size:28px;
-    font-weight:900;
-    margin-bottom:20px;
-    color:var(--cyan);
-}
-
-.column-player{
-    background:#101d3a;
-    border-radius:15px;
-    padding:18px;
-    text-align:center;
-    margin-bottom:15px;
-}
-
-.column-player img{
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    object-fit:cover;
-    margin-bottom:10px;
-}
-
-.column-player-name{
-    font-size:22px;
-    font-weight:800;
-}
-
-.column-player-rank{
-    color:var(--cyan);
-    margin-top:6px;
-    font-size:18px;
-    font-weight:800;
-}
-
 .modal-overlay{
     position:fixed;
     inset:0;
@@ -248,6 +196,12 @@ body{
     color:white;
     font-size:26px;
     cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    z-index:1000;
 }
 
 .modal-top{
@@ -310,6 +264,24 @@ body{
     font-weight:900;
 }
 
+@media(max-width:1100px){
+
+    .player-row{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .row-tiers-container{
+        grid-template-columns:repeat(3,1fr);
+        max-width:100%;
+    }
+
+    .modal-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
 </style>
 </head>
 <body>
@@ -330,26 +302,6 @@ body{
 
 </div>
 
-<div class="nav-tabs">
-
-<button class="tab-btn active" id="btn-overall" onclick="displayTab('overall')">Overall</button>
-<button class="tab-btn" id="btn-sword" onclick="displayTab('sword')">Sword</button>
-<button class="tab-btn" id="btn-axe" onclick="displayTab('axe')">Axe</button>
-<button class="tab-btn" id="btn-pot" onclick="displayTab('pot')">Pot</button>
-<button class="tab-btn" id="btn-nethpot" onclick="displayTab('nethpot')">NethPot</button>
-<button class="tab-btn" id="btn-uhc" onclick="displayTab('uhc')">UHC</button>
-<button class="tab-btn" id="btn-smp" onclick="displayTab('smp')">SMP</button>
-<button class="tab-btn" id="btn-diamondsmp" onclick="displayTab('diamondsmp')">Diamond SMP</button>
-<button class="tab-btn" id="btn-vanilla" onclick="displayTab('vanilla')">Vanilla</button>
-<button class="tab-btn" id="btn-mace" onclick="displayTab('mace')">Mace</button>
-<button class="tab-btn" id="btn-spear" onclick="displayTab('spear')">Spear</button>
-<button class="tab-btn" id="btn-spearmace" onclick="displayTab('spearmace')">Spear Mace</button>
-<button class="tab-btn" id="btn-cart" onclick="displayTab('cart')">Cart</button>
-
-</div>
-
-<div id="panel-overall">
-
 <div class="player-row" onclick="openModal(players[0])">
 
 <div class="player-left">
@@ -369,17 +321,11 @@ body{
 
 <div class="row-tiers-container">
 
-<div class="micro-tier"><div class="micro-tier-label">Swd</div><div class="micro-tier-rank">HT5</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Sword</div><div class="micro-tier-rank">HT5</div></div>
 <div class="micro-tier"><div class="micro-tier-label">Axe</div><div class="micro-tier-rank">HT5</div></div>
 <div class="micro-tier"><div class="micro-tier-label">Pot</div><div class="micro-tier-rank">HT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">NPot</div><div class="micro-tier-rank">LT5</div></div>
 <div class="micro-tier"><div class="micro-tier-label">UHC</div><div class="micro-tier-rank">HT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">SMP</div><div class="micro-tier-rank">HT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">DSMP</div><div class="micro-tier-rank">HT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Van</div><div class="micro-tier-rank">LT4</div></div>
 <div class="micro-tier"><div class="micro-tier-label">Mace</div><div class="micro-tier-rank">HT4</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Spr</div><div class="micro-tier-rank">NONE</div></div>
-<div class="micro-tier"><div class="micro-tier-label">S-M</div><div class="micro-tier-rank">LT5</div></div>
 <div class="micro-tier"><div class="micro-tier-label">Cart</div><div class="micro-tier-rank">HT5</div></div>
 
 </div>
@@ -405,27 +351,14 @@ body{
 
 <div class="row-tiers-container">
 
-<div class="micro-tier"><div class="micro-tier-label">Swd</div><div class="micro-tier-rank">HT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Axe</div><div class="micro-tier-rank">NONE</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Pot</div><div class="micro-tier-rank">NONE</div></div>
-<div class="micro-tier"><div class="micro-tier-label">NPot</div><div class="micro-tier-rank">NONE</div></div>
-<div class="micro-tier"><div class="micro-tier-label">UHC</div><div class="micro-tier-rank">NONE</div></div>
-<div class="micro-tier"><div class="micro-tier-label">SMP</div><div class="micro-tier-rank">NONE</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Sword</div><div class="micro-tier-rank">HT5</div></div>
 <div class="micro-tier"><div class="micro-tier-label">DSMP</div><div class="micro-tier-rank">LT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Van</div><div class="micro-tier-rank">LT5</div></div>
+<div class="micro-tier"><div class="micro-tier-label">Vanilla</div><div class="micro-tier-rank">LT5</div></div>
 <div class="micro-tier"><div class="micro-tier-label">Mace</div><div class="micro-tier-rank">HT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Spr</div><div class="micro-tier-rank">NONE</div></div>
-<div class="micro-tier"><div class="micro-tier-label">S-M</div><div class="micro-tier-rank">NONE</div></div>
 <div class="micro-tier"><div class="micro-tier-label">Cart</div><div class="micro-tier-rank">LT5</div></div>
 
 </div>
 
-</div>
-
-</div>
-
-<div id="panel-columns">
-<div class="columns-container" id="columns-matrix"></div>
 </div>
 
 </div>
@@ -524,8 +457,8 @@ const players = [
 
     avatar:"images/NinjaRLCS.png",
 
-    platform:"Bedrock",
-    device:"Mobile",
+    platform:"Javva",
+    device:"PC",
 
     sword:"HT5",
     axe:"NONE",
