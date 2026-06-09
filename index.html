@@ -12,6 +12,11 @@
     --card:#07152d;
     --card2:#101d3a;
     --cyan:#55fff5;
+    
+    /* Podium Colors */
+    --gold: #ffd700;
+    --silver: #c0c0c0;
+    --bronze: #cd7f32;
 }
 
 *{
@@ -69,28 +74,9 @@ body{
     transform:scale(1.05);
 }
 
-.nav-tabs{
-    background:#08152d;
-    border-radius:18px;
-    padding:16px;
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-bottom:30px;
-}
-
-.tab-btn{
-    border:none;
-    background:#101d3a;
-    color:white;
-    padding:12px 18px;
-    border-radius:12px;
-    cursor:pointer;
-    font-weight:700;
-}
-
-.tab-btn.active{
-    background:#5bcfd5;
+/* Leaderboard Container where JS injects rows */
+#leaderboard{
+    width: 100%;
 }
 
 .player-row{
@@ -103,7 +89,33 @@ body{
     gap:25px;
     margin-bottom:25px;
     cursor:pointer;
+    border: 3px solid transparent; /* Base state */
+    transition: transform 0.2s, box-shadow 0.2s;
 }
+
+.player-row:hover {
+    transform: translateY(-2px);
+}
+
+/* Top 3 Podium Outlines & Glows */
+.rank-1 {
+    border-color: var(--gold);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+.rank-1 .rank { color: var(--gold); }
+
+.rank-2 {
+    border-color: var(--silver);
+    box-shadow: 0 0 15px rgba(192, 192, 192, 0.2);
+}
+.rank-2 .rank { color: var(--silver); }
+
+.rank-3 {
+    border-color: var(--bronze);
+    box-shadow: 0 0 15px rgba(205, 127, 50, 0.2);
+}
+.rank-3 .rank { color: var(--bronze); }
+
 
 .player-left{
     display:flex;
@@ -115,6 +127,8 @@ body{
 .rank{
     font-size:64px;
     font-weight:900;
+    width: 60px;
+    text-align: center;
 }
 
 .player-head img{
@@ -302,178 +316,31 @@ body{
 <h1 class="title">SPLASH TIERS</h1>
 
 <div class="top-buttons">
+    <a href="#" class="top-btn discord-btn">🎮 Discord Server</a>
+    <a href="#" class="top-btn server-btn">🖥️ Server IP</a>
+</div>
 
-<a href="#" class="top-btn discord-btn">
-🎮 Discord Server
-</a>
-
-<a href="#" class="top-btn server-btn">
-🖥️ Server IP
-</a>
+<!-- Dynamic Leaderboard target -->
+<div id="leaderboard"></div>
 
 </div>
 
-<!-- Player 1: Ysplash_CC -->
-<div class="player-row" onclick="openModal(players[0])">
-
-<div class="player-left">
-
-<div class="rank">1</div>
-
-<div class="player-head">
-<img src="images/Ysplash_CC.png">
-</div>
-
-<div class="player-info">
-<h2>Ysplash_CC</h2>
-<p>Combat Cadet <span>(21 pts)</span></p>
-</div>
-
-</div>
-
-<div class="row-tiers-container">
-
-<div class="micro-tier"><div class="micro-tier-label">Sword</div><div class="micro-tier-rank">HT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Axe</div><div class="micro-tier-rank">HT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Pot</div><div class="micro-tier-rank">HT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">UHC</div><div class="micro-tier-rank">HT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Mace</div><div class="micro-tier-rank">HT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Cart</div><div class="micro-tier-rank">HT5</div></div>
-
-</div>
-
-</div>
-
-<!-- Player 2: NinjaRLCS -->
-<div class="player-row" onclick="openModal(players[1])">
-
-<div class="player-left">
-
-<div class="rank">2</div>
-
-<div class="player-head">
-<img src="images/NinjaRLCS.png">
-</div>
-
-<div class="player-info">
-<h2>NinjaRLCS</h2>
-<p>Rookie <span>(7 pts)</span></p>
-</div>
-
-</div>
-
-<div class="row-tiers-container">
-
-<div class="micro-tier"><div class="micro-tier-label">Sword</div><div class="micro-tier-rank">HT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">DSMP</div><div class="micro-tier-rank">LT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Vanilla</div><div class="micro-tier-rank">LT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Mace</div><div class="micro-tier-rank">HT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Cart</div><div class="micro-tier-rank">LT5</div></div>
-
-</div>
-
-</div>
-
-<!-- Player 3: Ysfblm7269 -->
-<div class="player-row" onclick="openModal(players[2])">
-
-<div class="player-left">
-
-<div class="rank">3</div>
-
-<div class="player-head">
-<img src="images/default_bedrock.png" onerror="this.src='https://placehold.co/65x65/101d3a/fff?text=Y'">
-</div>
-
-<div class="player-info">
-<h2>Ysfblm7269</h2>
-<p>Rookie <span>(0 pts)</span></p>
-</div>
-
-</div>
-
-<div class="row-tiers-container">
-
-<div class="micro-tier"><div class="micro-tier-label">Sword</div><div class="micro-tier-rank">LT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Mace</div><div class="micro-tier-rank">LT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Crystal</div><div class="micro-tier-rank">LT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">UHC</div><div class="micro-tier-rank">LT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Axe</div><div class="micro-tier-rank">LT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Vanilla</div><div class="micro-tier-rank">LT5</div></div>
-
-</div>
-
-</div>
-
-<!-- Player 4: Pianocraft4130 -->
-<div class="player-row" onclick="openModal(players[3])">
-
-<div class="player-left">
-
-<div class="rank">4</div>
-
-<div class="player-head">
-<img src="images/default_bedrock.png" onerror="this.src='https://placehold.co/65x65/101d3a/fff?text=P'">
-</div>
-
-<div class="player-info">
-<h2>Pianocraft4130</h2>
-<p>Rookie <span>(0 pts)</span></p>
-</div>
-
-</div>
-
-<div class="row-tiers-container">
-
-<div class="micro-tier"><div class="micro-tier-label">Mace</div><div class="micro-tier-rank">LT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Crystal</div><div class="micro-tier-rank">LT5</div></div>
-<div class="micro-tier"><div class="micro-tier-label">Sword</div><div class="micro-tier-rank">NONE</div></div>
-<div class="micro-tier"><div class="micro-tier-label">UHC</div><div class="micro-tier-rank">NONE</div></div>
-
-</div>
-
-</div>
-
-</div>
-
+<!-- Modal Structure -->
 <div class="modal-overlay" id="modal">
-
 <div class="modal">
-
 <button class="close-btn" onclick="closeModal()">×</button>
-
 <div class="modal-top">
-
 <div class="modal-avatar">
-
-<img id="modalHead" src="images/Ysplash_CC.png">
-
-<div class="modal-name" id="modalName">
-Ysplash_CC
+<img id="modalHead" src="">
+<div class="modal-name" id="modalName"></div>
+<div class="modal-rank" id="modalRank"></div>
+<div class="modal-points" id="modalPoints"></div>
+<div class="modal-points" id="modalPlatform"></div>
+<div class="modal-points" id="modalDevice"></div>
 </div>
-
-<div class="modal-rank" id="modalRank">
-Combat Cadet
-</div>
-
-<div class="modal-points" id="modalPoints">
-ME | 21 / 720
-</div>
-
-<div class="modal-points" id="modalPlatform">
-☕ Java Edition
-</div>
-
-<div class="modal-points" id="modalDevice">
-🖥️ PC
-</div>
-
-</div>
-
 </div>
 
 <div class="modal-grid">
-
 <div class="modal-box"><div class="modal-box-title">Sword</div><div class="modal-box-rank" id="mSword"></div></div>
 <div class="modal-box"><div class="modal-box-title">Axe</div><div class="modal-box-rank" id="mAxe"></div></div>
 <div class="modal-box"><div class="modal-box-title">Pot</div><div class="modal-box-rank" id="mPot"></div></div>
@@ -486,149 +353,146 @@ ME | 21 / 720
 <div class="modal-box"><div class="modal-box-title">Spear</div><div class="modal-box-rank" id="mSpear"></div></div>
 <div class="modal-box"><div class="modal-box-title">Spear Mace</div><div class="modal-box-rank" id="mSM"></div></div>
 <div class="modal-box"><div class="modal-box-title">Cart</div><div class="modal-box-rank" id="mCart"></div></div>
-
 </div>
-
 </div>
-
 </div>
 
 <script>
 
+// 1. Point Allocation Values
+const tierPointsMapping = {
+    "HT1": 60, "LT1": 55,
+    "HT2": 50, "LT2": 45,
+    "HT3": 40, "LT3": 35,
+    "HT4": 30, "LT4": 25,
+    "HT5": 20, "LT5": 15,
+    "NONE": 0
+};
+
+// 2. Pure Java Player Database
 const players = [
-
-{
-    name:"Ysplash_CC",
-    region:"ME",
-    rank:"Combat Cadet",
-    points:21,
-
-    avatar:"images/Ysplash_CC.png",
-
-    platform:"Java",
-    device:"PC",
-
-    sword:"HT5",
-    axe:"HT5",
-    pot:"HT5",
-    nethpot:"LT5",
-    uhc:"HT5",
-    smp:"HT5",
-    diamondsmp:"HT5",
-    vanilla:"LT4",
-    mace:"HT5",
-    spear:"NONE",
-    spearmace:"LT5",
-    cart:"HT5"
-},
-
-{
-    name:"NinjaRLCS",
-    region:"ME",
-    rank:"Rookie",
-    points:7,
-
-    avatar:"images/NinjaRLCS.png",
-
-    platform:"Java", // Fixed typo "Javva"
-    device:"PC",
-
-    sword:"HT5",
-    axe:"NONE",
-    pot:"NONE",
-    nethpot:"NONE",
-    uhc:"NONE",
-    smp:"NONE",
-    diamondsmp:"LT5",
-    vanilla:"LT5",
-    mace:"HT5",
-    spear:"NONE",
-    spearmace:"NONE",
-    cart:"LT5"
-},
-
-{
-    name:"Ysfblm7269",
-    region:"ME",
-    rank:"Rookie",
-    points:0,
-
-    avatar:"images/default_bedrock.png",
-
-    platform:"Bedrock",
-    device:"Mobile",
-
-    sword:"LT5",
-    axe:"LT5",
-    pot:"LT5",
-    nethpot:"LT5",
-    uhc:"LT5",
-    smp:"LT5",
-    diamondsmp:"LT5",
-    vanilla:"LT5",
-    mace:"LT5",
-    spear:"LT5",
-    spearmace:"LT5",
-    cart:"LT5"
-},
-
-{
-    name:"Pianocraft4130",
-    region:"EU",
-    rank:"Rookie",
-    points:0,
-
-    avatar:"images/default_bedrock.png",
-
-    platform:"Bedrock",
-    device:"Mobile",
-
-    sword:"NONE",
-    axe:"NONE",
-    pot:"NONE",
-    nethpot:"NONE",
-    uhc:"NONE",
-    smp:"NONE",
-    diamondsmp:"NONE",
-    vanilla:"NONE",
-    mace:"LT5",
-    spear:"NONE",
-    spearmace:"NONE",
-    cart:"NONE"
-}
-
+    {
+        name: "Ysplash_CC",
+        region: "ME",
+        avatar: "images/Ysplash_CC.png",
+        platform: "Java",
+        device: "PC",
+        sword: "HT5", axe: "HT5", pot: "HT5", nethpot: "LT5", uhc: "HT5", smp: "HT5",
+        diamondsmp: "HT5", vanilla: "LT4", mace: "HT5", spear: "NONE", spearmace: "LT5", cart: "HT5"
+    },
+    {
+        name: "NinjaRLCS",
+        region: "ME",
+        avatar: "images/NinjaRLCS.png",
+        platform: "Java",
+        device: "PC",
+        sword: "HT5", axe: "NONE", pot: "NONE", nethpot: "NONE", uhc: "NONE", smp: "NONE",
+        diamondsmp: "LT5", vanilla: "LT5", mace: "HT5", spear: "NONE", spearmace: "NONE", cart: "LT5"
+    },
+    {
+        name: "SampleElite",
+        region: "EU",
+        avatar: "images/default.png",
+        platform: "Java",
+        device: "PC",
+        sword: "LT1", axe: "HT3", pot: "NONE", nethpot: "NONE", uhc: "LT2", smp: "NONE",
+        diamondsmp: "NONE", vanilla: "NONE", mace: "HT1", spear: "NONE", spearmace: "NONE", cart: "NONE"
+    }
 ];
 
-function openModal(player){
+// 3. Automated Rank Names based on point values
+function calculateRankName(points) {
+    if (points >= 200) return "Splash Master";
+    if (points >= 120) return "Combat Master";
+    if (points >= 60)  return "Elite Combatant";
+    if (points >= 20)  return "Combat Cadet";
+    return "Rookie";
+}
 
-    document.getElementById("modal").style.display="flex";
+// 4. Engine: Computes scores, assigns ranks, sorts, and renders the UI
+function buildLeaderboard() {
+    // Run automated point calculators
+    players.forEach(player => {
+        let total = 0;
+        const kits = ['sword','axe','pot','nethpot','uhc','smp','diamondsmp','vanilla','mace','spear','spearmace','cart'];
+        
+        kits.forEach(kit => {
+            const rank = player[kit] || "NONE";
+            total += tierPointsMapping[rank] || 0;
+        });
+        
+        player.points = total;
+        player.rank = calculateRankName(total);
+    });
 
+    // Sort players by points from High to Low
+    players.sort((a, b) => b.points - a.points);
+
+    // Render HTML Rows dynamically
+    const container = document.getElementById("leaderboard");
+    container.innerHTML = ""; 
+
+    players.forEach((player, index) => {
+        const place = index + 1;
+        
+        // Match ranking tier styles for podium outlines
+        let podiumClass = "";
+        if (place === 1) podiumClass = "rank-1";
+        else if (place === 2) podiumClass = "rank-2";
+        else if (place === 3) podiumClass = "rank-3";
+
+        // Gather 6 visible kit micro-tiers for overview preview summary
+        const previewKits = [
+            {label: "Sword", val: player.sword},
+            {label: "Axe", val: player.axe},
+            {label: "Pot", val: player.pot},
+            {label: "UHC", val: player.uhc},
+            {label: "Mace", val: player.mace},
+            {label: "Cart", val: player.cart}
+        ];
+
+        let microTiersHTML = "";
+        previewKits.forEach(k => {
+            if(k.val !== "NONE") {
+                microTiersHTML += `<div class="micro-tier"><div class="micro-tier-label">${k.label}</div><div class="micro-tier-rank">${k.val}</div></div>`;
+            }
+        });
+
+        const rowHTML = `
+            <div class="player-row ${podiumClass}" onclick="openModalByIndex(${index})">
+                <div class="player-left">
+                    <div class="rank">${place}</div>
+                    <div class="player-head">
+                        <img src="${player.avatar}" onerror="this.src='https://placehold.co/65x65/101d3a/fff?text=${player.name[0]}'">
+                    </div>
+                    <div class="player-info">
+                        <h2>${player.name}</h2>
+                        <p>${player.rank} <span>(${player.points} pts)</span></p>
+                    </div>
+                </div>
+                <div class="row-tiers-container">
+                    ${microTiersHTML}
+                </div>
+            </div>
+        `;
+        container.innerHTML += rowHTML;
+    });
+}
+
+// 5. Open Modal Function based on Index position
+function openModalByIndex(index) {
+    const player = players[index];
+    if(!player) return;
+
+    document.getElementById("modal").style.display = "flex";
     document.getElementById("modalHead").src = player.avatar;
-
     document.getElementById("modalName").innerText = player.name;
-
     document.getElementById("modalRank").innerText = player.rank;
+    document.getElementById("modalPoints").innerText = `${player.region} | ${player.points} pts`;
+    document.getElementById("modalPlatform").innerText = `☕ ${player.platform} Edition`;
+    document.getElementById("modalDevice").innerText = `🖥️ ${player.device}`;
 
-    document.getElementById("modalPoints").innerText =
-    `${player.region} | ${player.points} / 720`;
-
-    let platformIcon = "☕";
-
-    if(player.platform === "Bedrock"){
-        platformIcon = "📱";
-    }
-
-    document.getElementById("modalPlatform").innerText =
-    `${platformIcon} ${player.platform} Edition`;
-
-    let deviceIcon = "🖥️";
-
-    if(player.device === "Mobile") deviceIcon = "📱";
-    if(player.device === "Console") deviceIcon = "🎮";
-
-    document.getElementById("modalDevice").innerText =
-    `${deviceIcon} ${player.device}`;
-
+    // Fill in stats grid details
     document.getElementById("mSword").innerText = player.sword;
     document.getElementById("mAxe").innerText = player.axe;
     document.getElementById("mPot").innerText = player.pot;
@@ -644,10 +508,12 @@ function openModal(player){
 }
 
 function closeModal(){
-    document.getElementById("modal").style.display="none";
+    document.getElementById("modal").style.display = "none";
 }
 
-</script>
+// Initialize on page bootup
+window.onload = buildLeaderboard;
 
+</script>
 </body>
 </html>
