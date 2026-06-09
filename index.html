@@ -178,10 +178,12 @@ body{
 .modal{
     width:950px;
     max-width:95%;
+    max-height: 90vh;
     background:#04132b;
     border-radius:25px;
     padding:35px;
     position:relative;
+    overflow-y: auto;
 }
 
 .close-btn{
@@ -201,7 +203,7 @@ body{
     align-items:center;
     justify-content:center;
 
-    z-index:1000;
+    z-index:1010;
 }
 
 .modal-top{
@@ -278,6 +280,15 @@ body{
 
     .modal-grid{
         grid-template-columns:repeat(2,1fr);
+    }
+
+    .modal-top {
+        padding-top: 30px;
+    }
+
+    .modal-name {
+        font-size: 42px;
+        text-align: center;
     }
 
 }
