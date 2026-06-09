@@ -89,7 +89,7 @@ body{
     gap:25px;
     margin-bottom:25px;
     cursor:pointer;
-    border: 3px solid transparent; /* Base state */
+    border: 3px solid transparent;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -359,7 +359,7 @@ body{
 
 <script>
 
-// 1. Point Allocation Values
+// 1. Point Allocation Values (Max possible: 12 kits * 60 pts = 720)
 const tierPointsMapping = {
     "HT1": 60, "LT1": 55,
     "HT2": 50, "LT2": 45,
@@ -369,10 +369,10 @@ const tierPointsMapping = {
     "NONE": 0
 };
 
-// 2. Pure Java Player Database
+// 2. Pure Java Player Database (Only YsplashMC and NinjaRLCS)
 const players = [
     {
-        name: "Ysplash_CC",
+        name: "YsplashMC",
         region: "ME",
         avatar: "images/Ysplash_CC.png",
         platform: "Java",
@@ -388,30 +388,23 @@ const players = [
         device: "PC",
         sword: "HT5", axe: "NONE", pot: "NONE", nethpot: "NONE", uhc: "NONE", smp: "NONE",
         diamondsmp: "LT5", vanilla: "LT5", mace: "HT5", spear: "NONE", spearmace: "NONE", cart: "LT5"
-    },
-    {
-        name: "SampleElite",
-        region: "EU",
-        avatar: "images/default.png",
-        platform: "Java",
-        device: "PC",
-        sword: "LT1", axe: "HT3", pot: "NONE", nethpot: "NONE", uhc: "LT2", smp: "NONE",
-        diamondsmp: "NONE", vanilla: "NONE", mace: "HT1", spear: "NONE", spearmace: "NONE", cart: "NONE"
     }
 ];
 
-// 3. Automated Rank Names based on point values
+// 3. Exact Point Ranges & Spellings Based on Your Rules
 function calculateRankName(points) {
-    if (points >= 200) return "Splash Master";
-    if (points >= 120) return "Combat Master";
-    if (points >= 60)  return "Elite Combatant";
-    if (points >= 20)  return "Combat Cadet";
+    if (points >= 600) return "Splash Master";
+    if (points >= 400) return "Combat Grandmaster";
+    if (points >= 250) return "Combat Master";
+    if (points >= 100) return "Ace";
+    if (points >= 50)  return "Specialist";
+    if (points >= 20)  return "Cadat";
+    if (points >= 10)  return "Novis";
     return "Rookie";
 }
 
 // 4. Engine: Computes scores, assigns ranks, sorts, and renders the UI
 function buildLeaderboard() {
-    // Run automated point calculators
     players.forEach(player => {
         let total = 0;
         const kits = ['sword','axe','pot','nethpot','uhc','smp','diamondsmp','vanilla','mace','spear','spearmace','cart'];
@@ -488,7 +481,7 @@ function openModalByIndex(index) {
     document.getElementById("modalHead").src = player.avatar;
     document.getElementById("modalName").innerText = player.name;
     document.getElementById("modalRank").innerText = player.rank;
-    document.getElementById("modalPoints").innerText = `${player.region} | ${player.points} pts`;
+    document.getElementById("modalPoints").innerText = `${player.region} | ${player.points} / 720 pts`;
     document.getElementById("modalPlatform").innerText = `☕ ${player.platform} Edition`;
     document.getElementById("modalDevice").innerText = `🖥️ ${player.device}`;
 
