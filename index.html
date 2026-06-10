@@ -356,7 +356,7 @@ body{
 
 <script>
 
-// 1. Point Allocation Values (Max possible: 12 kits * 60 pts = 720)
+// 1. Point Allocation Values (Max possible: 9 kits * 60 pts = 540)
 const tierPointsMapping = {
     "HT1": 60, "LT1": 50,
     "HT2": 40, "LT2": 30,
@@ -388,13 +388,13 @@ const players = [
     }
 ];
 
-// 3. Exact Point Ranges & Spellings Based on Your Rules
-function calculateRankName(points) 
+// 3. Exact Point Ranges & Spellings Based on Your Rules (Fixed missing curly brace)
+function calculateRankName(points) {
     if (points >= 500) return "Combat Grandmaster";
     if (points >= 400) return "Combat Master";
     if (points >= 300) return "Ace";
-    if (points >= 200)  return "Specialist";
-    if (points >= 100)  return "Cadat";
+    if (points >= 200) return "Specialist";
+    if (points >= 100) return "Cadat";
     if (points >= 50)  return "Novis";
     return "Rookie";
 }
@@ -477,7 +477,8 @@ function openModalByIndex(index) {
     document.getElementById("modalHead").src = player.avatar;
     document.getElementById("modalName").innerText = player.name;
     document.getElementById("modalRank").innerText = player.rank;
-    document.getElementById("modalPoints").innerText = `${player.region} | ${player.points} / 720 pts`;
+    // Updated denominator to reflect 9 kits (max 540 points)
+    document.getElementById("modalPoints").innerText = `${player.region} | ${player.points} / 540 pts`;
     document.getElementById("modalPlatform").innerText = `☕ ${player.platform} Edition`;
     document.getElementById("modalDevice").innerText = `🖥️ ${player.device}`;
 
