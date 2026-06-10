@@ -451,8 +451,8 @@ body {
 </head>
 <body>
 
-<!-- Background Music Element (Streaming Official Minecraft Aria Math from Internet Archive) -->
-<audio id="ariaMathAudio" loop src="https://archive.org/download/minecraft-volume-beta/13.%20Aria%20Math.mp3"></audio>
+<!-- Background Music Element (Corrected Direct Track Link) -->
+<audio id="ariaMathAudio" loop src="https://archive.org/download/minecraft-volume-beta/Aria%20Math.mp3"></audio>
 
 <div class="container">
     
@@ -460,7 +460,7 @@ body {
     <div class="header-wrapper">
         <div class="brand-logo">SPLASH TIERS</div>
         <div class="meta-action-btns">
-            <!-- Audio Controller -->
+            <!-- Audio Controller Button System -->
             <button class="action-btn music-btn" id="musicToggleBtn" onclick="togglePlayMusic()">🎵 Play Aria Math</button>
             <a href="#" class="action-btn">🎮 Discord Server</a>
             <a href="#" class="action-btn">🖥️ Server IP: mcpvp.club</a>
@@ -552,17 +552,23 @@ const players = [
 
 let currentActiveTab = "overall";
 
-// Audio Engine Manager Function
+// Audio Engine Manager Function (Enhanced Error Handled States)
 function togglePlayMusic() {
     const audio = document.getElementById("ariaMathAudio");
     const btn = document.getElementById("musicToggleBtn");
     
     if (audio.paused) {
-        audio.play();
-        btn.innerText = "⏸️ Pause Aria Math";
+        audio.play().then(() => {
+            btn.innerText = "⏸️ Pause Aria Math";
+            btn.style.background = "#312e81";
+        }).catch(err => {
+            console.error("Audio block:", err);
+            alert("Tap/Click on the screen background first, then hit Play again so your browser allows the music!");
+        });
     } else {
         audio.pause();
         btn.innerText = "🎵 Play Aria Math";
+        btn.style.background = "#1e1b4b";
     }
 }
 
