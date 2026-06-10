@@ -451,19 +451,23 @@ body {
 </head>
 <body>
 
-<audio id="ariaMathAudio" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+<!-- Background Music Element (Streaming Official Minecraft Aria Math from Internet Archive) -->
+<audio id="ariaMathAudio" loop src="https://archive.org/download/minecraft-volume-beta/13.%20Aria%20Math.mp3"></audio>
 
 <div class="container">
     
+    <!-- Top Brand Row -->
     <div class="header-wrapper">
         <div class="brand-logo">SPLASH TIERS</div>
         <div class="meta-action-btns">
+            <!-- Audio Controller -->
             <button class="action-btn music-btn" id="musicToggleBtn" onclick="togglePlayMusic()">🎵 Play Aria Math</button>
             <a href="#" class="action-btn">🎮 Discord Server</a>
             <a href="#" class="action-btn">🖥️ Server IP: mcpvp.club</a>
         </div>
     </div>
 
+    <!-- Navigation Filter Toolbar System (Fixed File Paths) -->
     <div class="filter-navbar" id="navTabsContainer">
         <button class="nav-tab active" onclick="switchViewTab('overall')">🏆 Overall</button>
         <button class="nav-tab" onclick="switchViewTab('sword')"><img src="sword.png" onerror="this.style.display='none'"> Sword</button>
@@ -477,10 +481,12 @@ body {
         <button class="nav-tab" onclick="switchViewTab('cart')"><img src="minecart-e4204998.png" onerror="this.style.display='none'"> Cart</button>
     </div>
 
+    <!-- Target mounting containers -->
     <div id="dynamicMainContentSlot"></div>
 
 </div>
 
+<!-- Modal Popup Wrapper Structure -->
 <div class="modal-overlay" id="profileModalSandbox">
     <div class="mctiers-modal-frame">
         <button class="modal-dismiss-btn" onclick="closeProfileModal()">×</button>
