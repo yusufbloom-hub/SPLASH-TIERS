@@ -65,6 +65,7 @@ body {
 
 .meta-action-btns {
     display: flex;
+    align-items: center;
     gap: 10px;
 }
 
@@ -81,12 +82,24 @@ body {
     align-items: center;
     gap: 8px;
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .action-btn:hover {
     color: white;
     background: var(--card-hover);
     border-color: #4b5563;
+}
+
+/* Music Player Controls Toggle Button */
+.music-btn {
+    background: #1e1b4b;
+    border-color: #4338ca;
+    color: #a5b4fc;
+}
+.music-btn:hover {
+    background: #312e81;
+    color: white;
 }
 
 /* Navigation Filters Grid Bar */
@@ -438,37 +451,36 @@ body {
 </head>
 <body>
 
+<audio id="ariaMathAudio" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
 <div class="container">
     
-    <!-- Top Brand Row -->
     <div class="header-wrapper">
         <div class="brand-logo">SPLASH TIERS</div>
         <div class="meta-action-btns">
+            <button class="action-btn music-btn" id="musicToggleBtn" onclick="togglePlayMusic()">🎵 Play Aria Math</button>
             <a href="#" class="action-btn">🎮 Discord Server</a>
             <a href="#" class="action-btn">🖥️ Server IP: mcpvp.club</a>
         </div>
     </div>
 
-    <!-- Navigation Filter Toolbar System (Now Using Custom Images) -->
     <div class="filter-navbar" id="navTabsContainer">
         <button class="nav-tab active" onclick="switchViewTab('overall')">🏆 Overall</button>
-        <button class="nav-tab" onclick="switchViewTab('sword')"><img src="images/icons/sword.png" onerror="this.style.display='none'"> Sword</button>
-        <button class="nav-tab" onclick="switchViewTab('axe')"><img src="images/icons/axe.png" onerror="this.style.display='none'"> Axe</button>
-        <button class="nav-tab" onclick="switchViewTab('pot')"><img src="images/icons/pot.png" onerror="this.style.display='none'"> Pot</button>
-        <button class="nav-tab" onclick="switchViewTab('nethpot')"><img src="images/icons/nethpot.png" onerror="this.style.display='none'"> NethPot</button>
-        <button class="nav-tab" onclick="switchViewTab('uhc')"><img src="images/icons/uhc.png" onerror="this.style.display='none'"> UHC</button>
-        <button class="nav-tab" onclick="switchViewTab('smp')"><img src="images/icons/smp.png" onerror="this.style.display='none'"> SMP</button>
-        <button class="nav-tab" onclick="switchViewTab('vanilla')"><img src="images/icons/vanilla.png" onerror="this.style.display='none'"> Vanilla</button>
-        <button class="nav-tab" onclick="switchViewTab('mace')"><img src="images/icons/mace.png" onerror="this.style.display='none'"> Mace</button>
-        <button class="nav-tab" onclick="switchViewTab('cart')"><img src="images/icons/cart.png" onerror="this.style.display='none'"> Cart</button>
+        <button class="nav-tab" onclick="switchViewTab('sword')"><img src="sword.png" onerror="this.style.display='none'"> Sword</button>
+        <button class="nav-tab" onclick="switchViewTab('axe')"><img src="axe.png" onerror="this.style.display='none'"> Axe</button>
+        <button class="nav-tab" onclick="switchViewTab('pot')"><img src="images (1).png" onerror="this.style.display='none'"> Pot</button>
+        <button class="nav-tab" onclick="switchViewTab('nethpot')"><img src="nethop.png" onerror="this.style.display='none'"> NethPot</button>
+        <button class="nav-tab" onclick="switchViewTab('uhc')"><img src="uhc-1.png" onerror="this.style.display='none'"> UHC</button>
+        <button class="nav-tab" onclick="switchViewTab('smp')"><img src="smp.png" onerror="this.style.display='none'"> SMP</button>
+        <button class="nav-tab" onclick="switchViewTab('vanilla')"><img src="vanilla.png" onerror="this.style.display='none'"> Vanilla</button>
+        <button class="nav-tab" onclick="switchViewTab('mace')"><img src="mace.png" onerror="this.style.display='none'"> Mace</button>
+        <button class="nav-tab" onclick="switchViewTab('cart')"><img src="minecart-e4204998.png" onerror="this.style.display='none'"> Cart</button>
     </div>
 
-    <!-- Target mounting containers -->
     <div id="dynamicMainContentSlot"></div>
 
 </div>
 
-<!-- Modal Popup Wrapper Structure -->
 <div class="modal-overlay" id="profileModalSandbox">
     <div class="mctiers-modal-frame">
         <button class="modal-dismiss-btn" onclick="closeProfileModal()">×</button>
@@ -504,24 +516,24 @@ const tierPointsMapping = {
     "LT3": 20, "HT4": 15, "LT4": 10, "HT5": 10, "LT5": 5, "NONE": 0
 };
 
-// --- EDIT ICON IMAGES FOLDER PATHS HERE ---
+// Configured image mapping directly linked to your GitHub root assets
 const gamemodeVisualIcons = {
-    sword: "images/icons/sword.png",
-    axe: "images/icons/axe.png",
-    pot: "images/icons/pot.png",
-    nethpot: "images/icons/nethpot.png",
-    uhc: "images/icons/uhc.png",
-    smp: "images/icons/smp.png",
-    vanilla: "images/icons/vanilla.png",
-    mace: "images/icons/mace.png",
-    cart: "images/icons/cart.png"
+    sword: "sword.png",
+    axe: "axe.png",
+    pot: "images (1).png",
+    nethpot: "nethop.png",
+    uhc: "uhc-1.png",
+    smp: "smp.png",
+    vanilla: "vanilla.png",
+    mace: "mace.png",
+    cart: "minecart-e4204998.png"
 };
 
 const players = [
     {
         name: "YsplashMC",
         region: "ME",
-        avatar: "images/YsplashMC.png",
+        avatar: "images/Ysplash_CC.png",
         sword: "HT5", axe: "HT5", pot: "HT5", nethpot: "LT5", uhc: "HT5", smp: "HT5", vanilla: "LT4", mace: "HT5", cart: "HT5"
     },
     {
@@ -533,6 +545,20 @@ const players = [
 ];
 
 let currentActiveTab = "overall";
+
+// Audio Engine Manager Function
+function togglePlayMusic() {
+    const audio = document.getElementById("ariaMathAudio");
+    const btn = document.getElementById("musicToggleBtn");
+    
+    if (audio.paused) {
+        audio.play();
+        btn.innerText = "⏸️ Pause Aria Math";
+    } else {
+        audio.pause();
+        btn.innerText = "🎵 Play Aria Math";
+    }
+}
 
 function calculateRankName(points) {
     if (points >= 500) return "Combat Grandmaster";
@@ -549,12 +575,10 @@ function getBadgeColorStyleClass(tier) {
     return `t-${tier.toLowerCase()}`;
 }
 
-// Global visual rendering Router
 function renderActiveView() {
     const stage = document.getElementById("dynamicMainContentSlot");
     stage.innerHTML = "";
 
-    // Precalculate baseline profiles
     players.forEach(p => {
         let score = 0;
         ['sword','axe','pot','nethpot','uhc','smp','vanilla','mace','cart'].forEach(k => {
@@ -565,7 +589,6 @@ function renderActiveView() {
     });
 
     if (currentActiveTab === "overall") {
-        // RENDER VIEW MODE 1: OVERALL DECK CARD LEADERBOARD
         players.sort((a, b) => b.points - a.points);
         
         let overlayWrapperHTML = `<div class="overall-list">`;
@@ -612,9 +635,7 @@ function renderActiveView() {
         stage.innerHTML = overlayWrapperHTML;
 
     } else {
-        // RENDER VIEW MODE 2: CHOSEN DEDICATED KIT SPLIT COLUMNS
         const kitKey = currentActiveTab;
-        
         let t1Players = [], t2Players = [], t35Players = [];
         
         players.forEach(p => {
@@ -661,7 +682,6 @@ function switchViewTab(tabName) {
     const buttons = document.querySelectorAll(".nav-tab");
     buttons.forEach(b => b.classList.remove("active"));
     
-    // Safety check to apply active styling safely across click events
     if(window.event) {
         window.event.currentTarget.classList.add("active");
     }
