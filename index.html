@@ -347,11 +347,8 @@ body{
 <div class="modal-box"><div class="modal-box-title">NethPot</div><div class="modal-box-rank" id="mNethPot"></div></div>
 <div class="modal-box"><div class="modal-box-title">UHC</div><div class="modal-box-rank" id="mUHC"></div></div>
 <div class="modal-box"><div class="modal-box-title">SMP</div><div class="modal-box-rank" id="mSMP"></div></div>
-<div class="modal-box"><div class="modal-box-title">Diamond SMP</div><div class="modal-box-rank" id="mDSMP"></div></div>
 <div class="modal-box"><div class="modal-box-title">Vanilla</div><div class="modal-box-rank" id="mVanilla"></div></div>
 <div class="modal-box"><div class="modal-box-title">Mace</div><div class="modal-box-rank" id="mMace"></div></div>
-<div class="modal-box"><div class="modal-box-title">Spear</div><div class="modal-box-rank" id="mSpear"></div></div>
-<div class="modal-box"><div class="modal-box-title">Spear Mace</div><div class="modal-box-rank" id="mSM"></div></div>
 <div class="modal-box"><div class="modal-box-title">Cart</div><div class="modal-box-rank" id="mCart"></div></div>
 </div>
 </div>
@@ -378,7 +375,7 @@ const players = [
         platform: "Java",
         device: "PC",
         sword: "HT5", axe: "HT5", pot: "HT5", nethpot: "LT5", uhc: "HT5", smp: "HT5",
-        diamondsmp: "HT5", vanilla: "LT4", mace: "HT5", spear: "NONE", spearmace: "LT5", cart: "HT5"
+        vanilla: "LT4", mace: "HT5", cart: "HT5"
     },
     {
         name: "NinjaRLCS",
@@ -387,19 +384,18 @@ const players = [
         platform: "Java",
         device: "PC",
         sword: "HT5", axe: "NONE", pot: "NONE", nethpot: "NONE", uhc: "NONE", smp: "NONE",
-        diamondsmp: "LT5", vanilla: "LT5", mace: "HT5", spear: "NONE", spearmace: "NONE", cart: "LT5"
+        vanilla: "LT5", mace: "HT5", cart: "LT5"
     }
 ];
 
 // 3. Exact Point Ranges & Spellings Based on Your Rules
-function calculateRankName(points) {
-    if (points >= 600) return "Splash Master";
-    if (points >= 400) return "Combat Grandmaster";
-    if (points >= 250) return "Combat Master";
-    if (points >= 100) return "Ace";
-    if (points >= 50)  return "Specialist";
-    if (points >= 20)  return "Cadat";
-    if (points >= 10)  return "Novis";
+function calculateRankName(points) 
+    if (points >= 500) return "Combat Grandmaster";
+    if (points >= 400) return "Combat Master";
+    if (points >= 300) return "Ace";
+    if (points >= 200)  return "Specialist";
+    if (points >= 100)  return "Cadat";
+    if (points >= 50)  return "Novis";
     return "Rookie";
 }
 
@@ -407,7 +403,7 @@ function calculateRankName(points) {
 function buildLeaderboard() {
     players.forEach(player => {
         let total = 0;
-        const kits = ['sword','axe','pot','nethpot','uhc','smp','diamondsmp','vanilla','mace','spear','spearmace','cart'];
+        const kits = ['sword','axe','pot','nethpot','uhc','smp','vanilla','mace','cart'];
         
         kits.forEach(kit => {
             const rank = player[kit] || "NONE";
@@ -492,11 +488,8 @@ function openModalByIndex(index) {
     document.getElementById("mNethPot").innerText = player.nethpot;
     document.getElementById("mUHC").innerText = player.uhc;
     document.getElementById("mSMP").innerText = player.smp;
-    document.getElementById("mDSMP").innerText = player.diamondsmp;
     document.getElementById("mVanilla").innerText = player.vanilla;
     document.getElementById("mMace").innerText = player.mace;
-    document.getElementById("mSpear").innerText = player.spear;
-    document.getElementById("mSM").innerText = player.spearmace;
     document.getElementById("mCart").innerText = player.cart;
 }
 
